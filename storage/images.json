@@ -1,0 +1,51 @@
+[
+    {
+      "filename": "pexels-asadphoto-1591361.jpg",
+      "alt": "Elegant hotel lobby with modern decor",
+      "credit": "Asad Photo on Pexels",
+      "tags": ["lobby", "interior", "luxury"]
+    },
+    {
+      "filename": "pexels-chetanvlad-2957461.jpg",
+      "alt": "Outdoor pool overlooking sunset",
+      "credit": "Chetan Vlad on Pexels",
+      "tags": ["pool", "sunset", "outdoor"]
+    },
+    {
+      "filename": "pexels-ian-panelo-3460599.jpg",
+      "alt": "Modern hotel room with large bed",
+      "credit": "Ian Panelo on Pexels",
+      "tags": ["room", "interior", "suite"]
+    },
+    {
+      "filename": "pexels-jodaarba-2204880.jpg",
+      "alt": "Minimalist hotel bedroom",
+      "credit": "Jodaarba on Pexels",
+      "tags": ["room", "minimal", "bedroom"]
+    },
+    {
+      "filename": "pexels-lina-1813467.jpg",
+      "alt": "Bright hotel room with balcony view",
+      "credit": "Lina on Pexels",
+      "tags": ["room", "view", "balcony"]
+    },
+    {
+      "filename": "pexels-ludvighedenborg-3578007.jpg",
+      "alt": "Dining area with ambient lighting",
+      "credit": "Ludvig Hedenborg on Pexels",
+      "tags": ["dining", "restaurant", "lighting"]
+    },
+    {
+      "filename": "pexels-studio-1441058.jpg",
+      "alt": "Luxurious hotel lounge area",
+      "credit": "Studio on Pexels",
+      "tags": ["lounge", "luxury", "seating"]
+    },
+    {
+      "filename": "pexels-zachtheshoota-1861153.jpg",
+      "alt": "Hotel front with entrance lighting",
+      "credit": "Zach The Shoota on Pexels",
+      "tags": ["exterior", "entrance", "night"]
+    }
+  ]
+  

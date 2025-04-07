@@ -1,2 +1,3 @@
 # Ignore .gitkeep files in all directories
 .gitkeep
+.env

@@ -3,11 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotel Reservation</title>
+  <title>FindStays</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <img src="../public/assets/pexels-asadphoto-1591361.jpg" alt="couldn't load the image" width="100" height="80">
-  <p>Hello world.</p>
-  <p>successfull</p>
+  <header class="navbar">
+    <div class="logo">FindStays</div>
+    <nav>
+      <a href="#">Home</a> <!-- page link will be provided after all the pages are done-->
+      <a href="#">Search</a>
+      <a href="#">Blog</a>
+      <a href="#">About Us</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="sign-in">Sign in</button>
+      <button class="register">Register</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Stay Quietly,<br />With No Worries</h1>
+      <p>
+        Welcome to our hotel booking platform, where your travel experience becomes easier and more enjoyable. With our platform, you can discover the perfect accommodation for your stay worldwide.
+      </p>
+      <div class="search-box">
+        <input type="text" placeholder="Type location" />
+        <select><option>Person</option></select>
+        <input type="date" />
+        <button class="search-btn">Search</button>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>

@@ -22,7 +22,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
    
     error.style.color = "green";
-    error.textContent = "Login successful! (Simulated)";
+    error.textContent = "Login successful!";
 });
 
 function validateEmail(email) {

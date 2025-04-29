@@ -44,6 +44,6 @@ document.getElementById("forgotForm").addEventListener("submit", function (e) {
     }
   
     error.style.color = "green";
-    error.textContent = "Reset link has been sent! (Simulated)";
+    error.textContent = "Reset link has been sent!";
   });
   

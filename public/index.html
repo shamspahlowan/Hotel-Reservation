@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FindStays</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Welcome to Hotel Reservation</title>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">FindStays</div>
-    <nav>
-      <a href="#">Home</a> <!-- page link will be provided after all the pages are done-->
-      <a href="#">Search</a>
-      <a href="#">Blog</a>
-      <a href="#">About Us</a>
-    </nav>
-    <div class="auth-buttons">
-      <button class="sign-in">Sign in</button>
-      <button class="register">Register</button>
-    </div>
+  <!-- Navigation -->
+  <nav aria-label="Main Navigation">
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header role="banner">
+    <h1>Effortless Hotel Booking, Anywhere</h1>
+    <p>Manage your reservations, streamline guest experiences, and grow your hospitality business.</p>
+    <a href="signup.html">Get Started</a>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Stay Quietly,<br />With No Worries</h1>
-      <p>
-        Welcome to our hotel booking platform, where your travel experience becomes easier and more enjoyable. With our platform, you can discover the perfect accommodation for your stay worldwide.
-      </p>
-      <div class="search-box">
-        <input type="text" placeholder="Type location" />
-        <select><option>Person</option></select>
-        <input type="date" />
-        <button class="search-btn">Search</button>
-      </div>
-    </div>
+  <!-- Features Section -->
+  <section id="features" aria-labelledby="features-heading">
+    <h2 id="features-heading">Features</h2>
+    <ul>
+      <li><strong>Online Booking:</strong> Seamless reservations 24/7</li>
+      <li><strong>Room Management:</strong> Track availability and status</li>
+      <li><strong>Automated Emails:</strong> Send confirmations and reminders</li>
+      <li><strong>Role Access:</strong> Admin and staff-specific controls</li>
+    </ul>
   </section>
 
+  <!-- Testimonials Section -->
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <h2 id="testimonials-heading">What Our Clients Say</h2>
+    <blockquote>
+      “Hotel Reservation helped us reduce overbookings and improve guest communication.”
+      <footer>– Anjali R., Front Desk Manager</footer>
+    </blockquote>
+    <blockquote>
+      “The admin tools are fantastic. We finally have visibility into our occupancy trends.”
+      <footer>– Mark T., Operations Director</footer>
+    </blockquote>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" aria-labelledby="about-heading">
+    <h2 id="about-heading">About Hotel Reservation</h2>
+    <p>Hotel Reservation is a powerful yet intuitive system designed for independent hotels, hostels, and resorts. We simplify daily operations while giving your guests a modern digital experience.</p>
+  </section>
+
+  <!-- Final Call-to-Action -->
+  <section aria-label="Sign Up Call to Action">
+    <h2>Ready to get started?</h2>
+    <a href="signup.html">Create Your Free Account</a>
+  </section>
 </body>
 </html>

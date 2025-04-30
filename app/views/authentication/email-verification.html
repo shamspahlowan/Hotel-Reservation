@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="email-verification.css" />
+</head>
+<body>
+  <div class="box">
+    <h2>Email Verification</h2>
+    <p>We've sent a 6-digit code to your email: <strong id="showEmail"></strong></p>
+    <form id="verifyForm">
+      <input type="text" id="codeInput" placeholder="Enter code" maxlength="6" required />
+      <p id="msg" class="error"></p>
+      <button type="submit">Verify</button>
+    </form>
+  </div>
+
+  <script src="email-verification.js"></script>
+</body>
+</html>

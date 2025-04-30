@@ -1,49 +1,25 @@
 document.getElementById("forgotForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-  
-    const emailInput = document.getElementById("email");
-    const error = document.getElementById("error");
-    const email = emailInput.value.trim();
-  
-    error.textContent = "";
-  
-    if (email === "") {
-      error.textContent = "Email cannot be empty.";
-      error.style.color = "red";
-      return;
-    }
-  
-    const parts = email.split("@");
-  
-    if (parts.length !== 2) {
-      error.textContent = "Invalid email format.";
-      error.style.color = "red";
-      return;
-    }
-  
-    const [username, domain] = parts;
-  
-    if (username === "" || domain === "") {
-      error.textContent = "Invalid email format.";
-      error.style.color = "red";
-      return;
-    }
-  
-    const domainParts = domain.split(".");
-    if (domainParts.length !== 2) {
-      error.textContent = "Email must be in the valid format (e.g., example@domain.com).";
-      error.style.color = "red";
-      return;
-    }
-  
-    const [subdomain, tld] = domainParts;
-    if (subdomain === "" || tld === "") {
-      error.textContent = "Email must be in the valid format (e.g., example@domain.com).";
-      error.style.color = "red";
-      return;
-    }
-  
-    error.style.color = "green";
-    error.textContent = "Reset link has been sent!";
-  });
-  
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const error = document.getElementById("error");
+
+  error.textContent = "";
+
+  if (email === "") {
+    error.textContent = "Email cannot be empty.";
+    return;
+  }
+
+  const parts = email.split("@");
+  if (parts.length !== 2 || parts[0] === "" || parts[1] === "" || !parts[1].includes(".")) {
+    error.textContent = "Invalid email format.";
+    return;
+  }
+
+  // Simulate sending a verification code
+  localStorage.setItem("verificationCode", "123456");
+  localStorage.setItem("userEmail", email);
+
+  window.location.href = "email-verification.html";
+});

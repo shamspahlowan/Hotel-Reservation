@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    padding: 30px;
+  }
+  
+  .search-container {
+    background: white;
+    padding: 2rem;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #0056b3;
+  }
+  
+  input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .results {
+    margin-top: 20px;
+  }
+  
+  .room-card {
+    background-color: #e9f3ff;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  

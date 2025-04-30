@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <div class="contact-container">
+    <h2>Message Sent!</h2>
+    <p>Thank you, <span id="userName"></span>. We received your message:</p>
+    <p><strong>Subject:</strong> <span id="userSubject"></span></p>
+    <p><strong>Message:</strong></p>
+    <p id="userMessage"></p>
+    <button onclick="goBack()">Back to Contact</button>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("contactSubmission"));
+    if (data) {
+      document.getElementById("userName").textContent = data.name;
+      document.getElementById("userSubject").textContent = data.subject;
+      document.getElementById("userMessage").textContent = data.message;
+    }
+
+    function goBack() {
+      window.location.href = "contact.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    padding: 30px;
+  }
+  
+  .amenities-container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #007BFF;
+  }
+  
+  #searchBox {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .amenity-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .amenity-card {
+    background: #f0f6ff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .amenity-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .amenity-card h4 {
+    margin: 5px 0;
+    color: #0056b3;
+  }
+  
+  .amenity-card p {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  

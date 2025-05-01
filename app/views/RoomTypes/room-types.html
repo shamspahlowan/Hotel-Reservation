@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room Types</title>
+  <link rel="stylesheet" href="room-types.css" />
+</head>
+<body>
+  <div class="room-container">
+    <h2>Our Room Types</h2>
+
+    <div class="filter-bar">
+      <label for="categorySelect">Filter by Category:</label>
+      <select id="categorySelect">
+        <option value="">All</option>
+        <option value="Standard">Standard</option>
+        <option value="Deluxe">Deluxe</option>
+        <option value="Suite">Suite</option>
+      </select>
+    </div>
+
+    <div id="roomList" class="room-list"></div>
+
+    <h3>Compare Amenities</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Amenity</th>
+          <th>Standard</th>
+          <th>Deluxe</th>
+          <th>Suite</th>
+        </tr>
+      </thead>
+      <tbody id="amenitiesTable"></tbody>
+    </table>
+  </div>
+
+  <!-- 360° Tour Modal -->
+  <div id="tourModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal()" class="close">&times;</span>
+      <p><strong>360° Virtual Tour</strong><br/>[Simulated View]</p>
+    </div>
+  </div>
+
+  <script src="room-types.js"></script>
+</body>
+</html>

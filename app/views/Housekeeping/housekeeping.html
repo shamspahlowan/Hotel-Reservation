@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Housekeeping Dashboard</title>
+  <link rel="stylesheet" href="housekeeping.css" />
+</head>
+<body>
+  <div class="housekeeping-container">
+    <h2>Housekeeping Status Board</h2>
+
+    <div id="roomBoard" class="room-board"></div>
+
+    <h3>Report Maintenance Issue</h3>
+    <form id="reportForm">
+      <label>Room Number:
+        <input type="number" id="issueRoom" required />
+      </label>
+      <label>Issue Description:
+        <textarea id="issueDesc" required></textarea>
+      </label>
+      <button type="submit">Submit Report</button>
+      <p id="reportMsg"></p>
+    </form>
+  </div>
+
+  <script src="housekeeping.js"></script>
+</body>
+</html>

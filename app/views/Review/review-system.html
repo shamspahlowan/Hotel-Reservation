@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review System</title>
+</head>
+<body>
+  <section id="review-form-section">
+    <h2>Submit Your Review</h2>
+    <form id="review-form" novalidate>
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <div id="star-rating" role="radiogroup" aria-label="Star Rating" data-rating="0">
+          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1">☆</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="2">☆</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="3">☆</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="4">☆</span>
+          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="5">☆</span>
+        </div>
+        <input type="hidden" name="rating" id="rating" />
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" rows="5" placeholder="Tell us about your stay" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="traveler-type">Traveler Type:</label>
+        <select id="traveler-type" name="travelerType" required>
+          <option value="">-- Select your travel style --</option>
+          <option value="solo">Solo</option>
+          <option value="couple">Couple</option>
+          <option value="family">Family</option>
+          <option value="business">Business</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit Review</button>
+    </form>
+  </section>
+
+  <section id="moderation-tool">
+    <h2>Comment Moderation</h2>
+    <button id="show-pending">Show Pending Reviews</button>
+    <ul id="pending-list"></ul>
+  </section>
+
+  <section id="management-response">
+    <h2>Respond to Review</h2>
+    <form id="response-form">
+      <label for="response-id">Review ID:</label>
+      <input type="number" id="response-id" name="reviewId" min="1" required />
+
+      <label for="response-text">Your Response:</label>
+      <textarea id="response-text" name="responseText" rows="3" placeholder="Write response" required></textarea>
+
+      <button type="submit">Post Response</button>
+    </form>
+  </section>
+
+  <section id="reviews-list-section">
+    <h2>All Reviews</h2>
+    <label for="filter-type">Filter by Traveler Type:</label>
+    <select id="filter-type">
+      <option value="all">All</option>
+      <option value="solo">Solo</option>
+      <option value="couple">Couple</option>
+      <option value="family">Family</option>
+      <option value="business">Business</option>
+    </select>
+    <ul id="reviews-list"></ul>
+  </section>
+
+  <script src="review-system.js"></script>
+</body>
+</html>

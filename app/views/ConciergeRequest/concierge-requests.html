@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Concierge Requests</title>
+</head>
+<body>
+  <section id="service-catalog">
+    <h2>Service Catalog</h2>
+    <ul id="services-list">
+      <li data-service="room-service">Room Service</li>
+      <li data-service="laundry">Laundry Service</li>
+      <li data-service="tour">Local Tours</li>
+      <li data-service="transport">Airport Transfer</li>
+    </ul>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" value="1" />
+    <label for="details">Special Instructions:</label>
+    <textarea id="details" rows="2" placeholder="Any preferences?"></textarea>
+    <button id="order-btn">Place Request</button>
+  </section>
+
+  <section id="request-tracker">
+    <h2>Your Requests</h2>
+    <ul id="requests-list"></ul>
+  </section>
+
+  <section id="fulfillment-alert">
+    <h2>Alerts</h2>
+    <div id="alerts-area"></div>
+  </section>
+
+  <script src="concierge-requests.js"></script>
+</body>
+</html>

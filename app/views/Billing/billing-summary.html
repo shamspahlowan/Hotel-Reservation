@@ -2,30 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Billing Summary</title>
+  <link rel="stylesheet" href="billing-summary.css">
 </head>
 <body>
-  <section id="folio-viewer">
-    <h2>Guest Folio</h2>
-    <label for="guest-name">Guest Name:</label>
-    <input type="text" id="guest-name" placeholder="e.g. John Doe" required />
-    <table id="charges-table">
-      <thead>
-        <tr><th>Date</th><th>Description</th><th>Amount (USD)</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
+  <div class="container">
+    <!-- Folio Viewer Section -->
+    <section id="folio-viewer" class="section">
+      <h2>Guest Folio</h2>
+      <label for="guest-name">Guest Name:</label>
+      <input type="text" id="guest-name" placeholder="e.g. John Doe" required />
+      <table id="charges-table">
+        <thead>
+          <tr><th>Date</th><th>Description</th><th>Amount (USD)</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-  <section id="charge-breakdown">
-    <h2>Breakdown & Totals</h2>
-    <div id="breakdown-details"></div>
-  </section>
+    <!-- Charge Breakdown Section -->
+    <section id="charge-breakdown" class="section">
+      <h2>Breakdown & Totals</h2>
+      <div id="breakdown-details"></div>
+    </section>
 
-  <section id="receipt-generator">
-    <button id="split-btn">Split Payment</button>
-    <button id="email-receipt-btn">Email Receipt</button>
-  </section>
+    <!-- Receipt Generator Section -->
+    <section id="receipt-generator" class="section">
+      <button id="split-btn" class="btn">Split Payment</button>
+      <button id="email-receipt-btn" class="btn">Email Receipt</button>
+    </section>
+  </div>
 
   <script src="billing-summary.js"></script>
 </body>

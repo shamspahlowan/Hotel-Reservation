@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Review System</title>
+  <link rel="stylesheet" href="review-system.css">
 </head>
 <body>
-  <section id="review-form-section">
+  <!-- Review Form Section -->
+  <section id="review-form-section" class="form-section">
     <h2>Submit Your Review</h2>
     <form id="review-form" novalidate>
       <div class="form-group">
@@ -40,13 +43,15 @@
     </form>
   </section>
 
-  <section id="moderation-tool">
+  <!-- Moderation Section -->
+  <section id="moderation-tool" class="moderation-section">
     <h2>Comment Moderation</h2>
     <button id="show-pending">Show Pending Reviews</button>
     <ul id="pending-list"></ul>
   </section>
 
-  <section id="management-response">
+  <!-- Management Response Section -->
+  <section id="management-response" class="response-section">
     <h2>Respond to Review</h2>
     <form id="response-form">
       <label for="response-id">Review ID:</label>
@@ -59,7 +64,8 @@
     </form>
   </section>
 
-  <section id="reviews-list-section">
+  <!-- Reviews List Section -->
+  <section id="reviews-list-section" class="reviews-list-section">
     <h2>All Reviews</h2>
     <label for="filter-type">Filter by Traveler Type:</label>
     <select id="filter-type">
@@ -69,6 +75,13 @@
       <option value="family">Family</option>
       <option value="business">Business</option>
     </select>
+
+    <div id="reviews-pagination">
+      <button id="prev-page" disabled>&laquo; Prev</button>
+      <span id="page-num">Page 1</span>
+      <button id="next-page">Next &raquo;</button>
+    </div>
+
     <ul id="reviews-list"></ul>
   </section>
 

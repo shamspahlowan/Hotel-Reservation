@@ -1,6 +1,6 @@
 const groups = [];
 
-// Create group
+
 document.getElementById('new-group-btn').addEventListener('click', () => {
   const id = prompt('Enter unique Group ID:').trim();
   if (!id) return alert('ID required.');
@@ -17,7 +17,7 @@ function renderGroups() {
   });
 }
 
-// Block rooms
+
 document.getElementById('room-block-form').addEventListener('submit', e => {
   e.preventDefault();
   const { groupId, numRooms, roomType } = e.target;
@@ -28,7 +28,7 @@ document.getElementById('room-block-form').addEventListener('submit', e => {
   renderGroups(); e.target.reset();
 });
 
-// Set payment terms
+
 document.getElementById('terms-form').addEventListener('submit', e => {
   e.preventDefault();
   const { depositRate, dueDate } = e.target;
@@ -39,7 +39,7 @@ document.getElementById('terms-form').addEventListener('submit', e => {
   renderGroups(); e.target.reset();
 });
 
-// Plan event
+
 document.getElementById('event-form').addEventListener('submit', e => {
   e.preventDefault();
   const id = prompt('Group ID for this event:').trim();

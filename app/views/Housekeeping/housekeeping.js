@@ -2,7 +2,7 @@ const roomBoard = document.getElementById("roomBoard");
 const reportForm = document.getElementById("reportForm");
 const reportMsg = document.getElementById("reportMsg");
 
-// Simulated room data
+
 let rooms = [
   { number: 101, status: "cleaned" },
   { number: 102, status: "in-progress" },
@@ -61,7 +61,6 @@ reportForm.addEventListener("submit", function (e) {
   const room = document.getElementById("issueRoom").value;
   const desc = document.getElementById("issueDesc").value;
 
-  // Simulate report handling
   console.log(`Issue reported for room ${room}: ${desc}`);
   reportMsg.textContent = `Issue submitted for room ${room}.`;
   reportForm.reset();

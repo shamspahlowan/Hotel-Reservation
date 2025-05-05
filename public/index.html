@@ -1,62 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Welcome to Hotel Reservation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexStay | Smart Hotel Reservations</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav aria-label="Main Navigation">
-    <ul>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="signup.html">Sign Up</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <header role="banner">
-    <h1>Effortless Hotel Booking, Anywhere</h1>
-    <p>Manage your reservations, streamline guest experiences, and grow your hospitality business.</p>
-    <a href="signup.html">Get Started</a>
+  <!-- Navigation -->
+  <header id="main-header">
+    <nav id="navbar">
+      <div id="brand">NexStay</div>
+      <ul>
+        <li><a href="#about-section">About</a></li>
+        <li><a href="#features-section">Features</a></li>
+        <li><a href="#testimonials-section">Testimonials</a></li>
+        <li><a href="#signup-section">Sign Up</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Features Section -->
-  <section id="features" aria-labelledby="features-heading">
-    <h2 id="features-heading">Features</h2>
-    <ul>
-      <li><strong>Online Booking:</strong> Seamless reservations 24/7</li>
-      <li><strong>Room Management:</strong> Track availability and status</li>
-      <li><strong>Automated Emails:</strong> Send confirmations and reminders</li>
-      <li><strong>Role Access:</strong> Admin and staff-specific controls</li>
-    </ul>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" aria-labelledby="testimonials-heading">
-    <h2 id="testimonials-heading">What Our Clients Say</h2>
-    <blockquote>
-      “Hotel Reservation helped us reduce overbookings and improve guest communication.”
-      <footer>– Anjali R., Front Desk Manager</footer>
-    </blockquote>
-    <blockquote>
-      “The admin tools are fantastic. We finally have visibility into our occupancy trends.”
-      <footer>– Mark T., Operations Director</footer>
-    </blockquote>
+  <!-- Hero Section with Carousel Background -->
+  <section id="landing-section">
+    <div class="hero-carousel" id="hero-carousel">
+      <!-- Dynamic images will be injected here -->
+    </div>
+    <div class="landing-content">
+      <h1>Your Smart Hotel Booking System</h1>
+      <p>Streamline reservations, boost occupancy, and enhance guest experiences with NexStay.</p>
+      <button onclick="scrollToSection('signup-section')">Get Started</button>
+      <button onclick="scrollToSection('features-section')">Explore Features</button>
+    </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" aria-labelledby="about-heading">
-    <h2 id="about-heading">About Hotel Reservation</h2>
-    <p>Hotel Reservation is a powerful yet intuitive system designed for independent hotels, hostels, and resorts. We simplify daily operations while giving your guests a modern digital experience.</p>
+  <section id="about-section">
+    <h2>About NexStay</h2>
+    <p>NexStay is a hotel management and booking system built to make the process easier for guests and hotel admins alike. With powerful analytics, role-based access, and real-time reservations, it's built for performance and simplicity.</p>
   </section>
 
-  <!-- Final Call-to-Action -->
-  <section aria-label="Sign Up Call to Action">
-    <h2>Ready to get started?</h2>
-    <a href="signup.html">Create Your Free Account</a>
+  <!-- Features Section -->
+  <section id="features-section">
+    <h2>Powerful Features</h2>
+    <div class="feature-list">
+      <div class="feature-card">
+        <h3>Real-Time Bookings</h3>
+        <p>Instant booking confirmations and live availability updates.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Role-Based Access</h3>
+        <p>Control who can access what. Admins, editors, and users.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Analytics Dashboard</h3>
+        <p>View occupancy, revenue, and performance trends visually.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Mobile Ready</h3>
+        <p>Optimized UI works seamlessly across all devices.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Secure Storage</h3>
+        <p>Data encrypted with daily backup support for safety.</p>
+      </div>
+    </div>
   </section>
+
+  <!-- Carousel Section -->
+  <section id="carousel-section">
+    <h2>Gallery</h2>
+    <div class="carousel-wrapper" id="carousel-wrapper"></div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials-section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"NexStay transformed our operations. Fast, simple, efficient."</p>
+        <span>– Olivia, Aurora Inn</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"I love the dashboards and role control system. Brilliant."</p>
+        <span>– Raj, Sapphire Hotels</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"A huge step up from our old system. Highly recommended."</p>
+        <span>– Laura, SeaView Resort</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section id="signup-section">
+    <h2>Get Started with NexStay</h2>
+    <p>Create your hotel account now and start managing bookings instantly.</p>
+    <form id="signup-form">
+      <input type="text" placeholder="User Name" required/>
+      <input type="email" placeholder="Email Address" required/>
+      <input type="password" placeholder="Create Password" required/>
+      <button type="submit">Create Account</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer id="main-footer">
+    <p>&copy; 2025 NexStay. All rights reserved.</p>
+    <p><a href="#main-header">Back to top</a></p>
+  </footer>
+
+  <script src="index.js"></script>
 </body>
 </html>

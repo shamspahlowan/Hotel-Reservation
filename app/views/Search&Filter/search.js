@@ -65,6 +65,5 @@ const rooms = [
   wifiCheck.addEventListener("change", filterRooms);
   acCheck.addEventListener("change", filterRooms);
   
-  // Initial display
   filterRooms();
   

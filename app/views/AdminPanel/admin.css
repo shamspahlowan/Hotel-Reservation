@@ -1,0 +1,107 @@
+/* Basic Layout */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #admin-header {
+    background: #007BFF;
+    padding: 10px;
+  }
+  
+  #admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #admin-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #admin-navbar ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  #admin-navbar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  #admin-navbar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Section Styles */
+  section {
+    padding: 20px;
+    margin: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #007BFF;
+  }
+  
+  button {
+    background: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background: #f2f5f9;
+  }
+  
+  tr:hover {
+    background: #f2f5f9;
+  }
+  
+  /* Search and Filter */
+  .search-filter input, .content-filter input {
+    padding: 8px;
+    margin: 10px 0;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .settings-form input, .settings-form select {
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  

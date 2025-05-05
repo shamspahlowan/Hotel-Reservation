@@ -1,21 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - MyApp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | NexStay</title>
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-  <div class="admin-panel-container">
-    <nav>
-      <a href="#">Manage Users</a>
-      <a href="#">Moderate Content</a>
-      <a href="#">System Settings</a>
+
+  <!-- Navigation -->
+  <header id="admin-header">
+    <nav id="admin-navbar">
+      <div id="brand">NexStay Admin Panel</div>
+      <ul>
+        <li><a href="#user-management-section">User Management</a></li>
+        <li><a href="#content-moderation-section">Content Moderation</a></li>
+        <li><a href="#system-settings-section">System Settings</a></li>
+      </ul>
     </nav>
-    <main>
-      <h2>Welcome to the Admin Dashboard</h2>
-      <p>Use the links above to manage the platform.</p>
-    </main>
-  </div>
+  </header>
+
+  <!-- User Management Section -->
+  <section id="user-management-section">
+    <h2>User Management</h2>
+    <div class="search-filter">
+      <input type="text" id="user-search" placeholder="Search users..." oninput="filterUsers()" />
+      <button onclick="bulkDeleteUsers()">Delete Selected</button>
+      <button onclick="bulkActivateUsers()">Activate Selected</button>
+    </div>
+    <table id="user-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="select-all-users" onclick="toggleSelectAllUsers()" /></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- User records will be dynamically populated here -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Content Moderation Section -->
+  <section id="content-moderation-section">
+    <h2>Content Moderation</h2>
+    <div class="content-filter">
+      <input type="text" id="content-search" placeholder="Search content..." oninput="filterContent()" />
+    </div>
+    <table id="content-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="select-all-content" onclick="toggleSelectAllContent()" /></th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Content records will be dynamically populated here -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- System Settings Section -->
+  <section id="system-settings-section">
+    <h2>System Settings</h2>
+    <div class="settings-form">
+      <label for="site-name">Site Name:</label>
+      <input type="text" id="site-name" value="NexStay" />
+      <label for="maintenance-mode">Maintenance Mode:</label>
+      <select id="maintenance-mode">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+      </select>
+      <button onclick="saveSystemSettings()">Save Settings</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="admin-footer">
+    <p>&copy; 2025 NexStay. All rights reserved.</p>
+  </footer>
+
+  <script src="admin.js"></script>
 </body>
 </html>

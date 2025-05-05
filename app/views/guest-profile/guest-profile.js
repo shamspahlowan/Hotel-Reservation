@@ -1,4 +1,4 @@
-// Preferences
+
 const preferencesForm = document.getElementById("preferencesForm");
 const bedType = document.getElementById("bedType");
 const floor = document.getElementById("floor");
@@ -17,7 +17,7 @@ preferencesForm.addEventListener("submit", function (e) {
   saveMsg.style.color = "green";
 });
 
-// Load preferences on page load
+
 window.addEventListener("load", () => {
   const saved = JSON.parse(localStorage.getItem("guestPreferences"));
   if (saved) {
@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
   updateLoyalty();
 });
 
-// Stay history simulation
+
 const stays = [
   { room: "Deluxe Room", dates: "2024-03-10 to 2024-03-12", amount: 300 },
   { room: "Suite", dates: "2024-04-01 to 2024-04-05", amount: 800 },

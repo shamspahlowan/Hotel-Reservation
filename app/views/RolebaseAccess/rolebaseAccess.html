@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Assign Roles - Hotel Reservation Admin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RBAC - Hotel Reservation System</title>
+  <link rel="stylesheet" href="rolebaseAccess.css" /> <!-- optional, for future CSS -->
 </head>
 <body>
-  <main>
-    <h1>Role Assignment</h1>
-    <form method="POST" action="" aria-label="Role Assignment Form">
-      <table border="1" aria-describedby="role-assignment-description">
-        <caption id="role-assignment-description">Assign roles to registered users</caption>
+
+  <!-- Top Navigation Bar -->
+  <nav id="navbar">
+    <ul id="nav-list">
+      <li data-role="Admin">Dashboard</li>
+      <li data-role="Admin">Manage Users</li>
+      <li data-role="Editor">Manage Reservations</li>
+      <li data-role="Editor">Edit Hotel Info</li>
+      <li data-role="User">View Bookings</li>
+      <li data-role="User">Profile</li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main id="main-content">
+    <h1>Role-Based Access Control</h1>
+
+    <!-- Role Assignment Section -->
+    <section id="role-assignment">
+      <h2>Assign Roles</h2>
+      <table border="1">
         <thead>
           <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Current Role</th>
-            <th scope="col">Assign New Role</th>
-            <th scope="col">Action</th>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Current Role</th>
+            <th>Assign New Role</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>john@example.com</td>
-            <td>User</td>
-            <td>
-              <label for="role-john" class="visually-hidden">Select new role</label>
-              <select name="role[john@example.com]" id="role-john">
-                <option value="User" selected>User</option>
-                <option value="Editor">Editor</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </td>
-            <td><button type="submit" name="assign" value="john@example.com">Assign</button></td>
-          </tr>
-          <!-- Duplicate for additional users -->
+        <tbody id="user-table">
+          <!-- Dynamically Filled -->
         </tbody>
       </table>
-    </form>
-    <h1>Permission Settings</h1>
-    <form method="POST" action="" aria-label="Permission Settings Form">
-      <table border="1" aria-describedby="permissions-desc">
-        <caption id="permissions-desc">Configure which features are accessible for each role</caption>
-        <thead>
-          <tr>
-            <th scope="col">Feature</th>
-            <th scope="col">User</th>
-            <th scope="col">Editor</th>
-            <th scope="col">Admin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>View Dashboard</td>
-            <td><input type="checkbox" name="permissions[user][]" value="dashboard" checked /></td>
-            <td><input type="checkbox" name="permissions[editor][]" value="dashboard" checked /></td>
-            <td><input type="checkbox" name="permissions[admin][]" value="dashboard" checked /></td>
-          </tr>
-          <tr>
-            <td>Manage Reservations</td>
-            <td><input type="checkbox" name="permissions[user][]" value="reservations" /></td>
-            <td><input type="checkbox" name="permissions[editor][]" value="reservations" checked /></td>
-            <td><input type="checkbox" name="permissions[admin][]" value="reservations" checked /></td>
-          </tr>
-          <tr>
-            <td>System Settings</td>
-            <td><input type="checkbox" name="permissions[user][]" value="settings" disabled /></td>
-            <td><input type="checkbox" name="permissions[editor][]" value="settings" /></td>
-            <td><input type="checkbox" name="permissions[admin][]" value="settings" checked /></td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit">Save Permissions</button>
-    </form>
+    </section>
+
+    <!-- Permission Settings -->
+    <section id="permission-settings">
+      <h2>Permission Settings</h2>
+      <form id="permission-form">
+        <label for="role-select">Select Role:</label>
+        <select id="role-select">
+          <option value="Admin">Admin</option>
+          <option value="Editor">Editor</option>
+          <option value="User">User</option>
+        </select>
+
+        <h3>Features</h3>
+        <label><input type="checkbox" value="Dashboard"> Dashboard</label><br>
+        <label><input type="checkbox" value="Manage Users"> Manage Users</label><br>
+        <label><input type="checkbox" value="Manage Reservations"> Manage Reservations</label><br>
+        <label><input type="checkbox" value="Edit Hotel Info"> Edit Hotel Info</label><br>
+        <label><input type="checkbox" value="View Bookings"> View Bookings</label><br>
+        <label><input type="checkbox" value="Profile"> Profile</label><br>
+
+        <button type="button" onclick="savePermissions()">Save Permissions</button>
+      </form>
+    </section>
+
+    <!-- Simulated Dashboard -->
+    <section id="dashboard">
+      <h2>Dashboard Simulation</h2>
+      <label for="simulate-role">Simulate as:</label>
+      <select id="simulate-role" onchange="updateVisibleFeatures()">
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="User">User</option>
+      </select>
+
+      <div id="feature-display">
+        <!-- Role-Based Features Here -->
+      </div>
+    </section>
+
   </main>
+
+  <script src="rolebaseAccess.js"></script>
 </body>
 </html>

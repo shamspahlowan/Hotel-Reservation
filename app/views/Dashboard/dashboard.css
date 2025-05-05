@@ -1,0 +1,133 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+#top-bar {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #343a40;
+  color: white;
+  padding: 20px 10px;
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+  transition: background-color 0.3s;
+}
+
+#sidebar ul li:hover {
+  background-color: #495057;
+}
+
+#dashboard-main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+#summary-widgets {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.widget {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 23%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.widget:hover {
+  transform: scale(1.05);
+}
+
+.widget h3 {
+  margin: 0;
+  color: #007bff;
+}
+
+.widget p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+#analytics-overview {
+  margin-top: 20px;
+}
+
+.chart-box {
+  background-color: #ffffff;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bar-chart {
+  margin-top: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.bar-wrapper {
+  margin: 5px 0;
+  background: #f1f1f1;
+  padding: 4px;
+}
+
+.bar {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#details-panel {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#detail-content {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}

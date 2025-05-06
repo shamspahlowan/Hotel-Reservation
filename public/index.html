@@ -16,12 +16,13 @@
         <li><a href="#about-section">About</a></li>
         <li><a href="#features-section">Features</a></li>
         <li><a href="#testimonials-section">Testimonials</a></li>
-        <li><a href="#signup-section">Sign Up</a></li>
+        <li><a href="../app/views/authentication/signup.html">Sign Up</a></li>
+        <li><a href="../app/views/authentication/login.html">Login</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section with Carousel Background -->
+  <!-- Hero Section -->
   <section id="landing-section">
     <div class="hero-carousel" id="hero-carousel">
       <!-- Dynamic images will be injected here -->
@@ -29,8 +30,11 @@
     <div class="landing-content">
       <h1>Your Smart Hotel Booking System</h1>
       <p>Streamline reservations, boost occupancy, and enhance guest experiences with NexStay.</p>
-      <button onclick="scrollToSection('signup-section')">Get Started</button>
-      <button onclick="scrollToSection('features-section')">Explore Features</button>
+      <div class="cta-buttons">
+        <!-- <a href="signup.html" class="cta-btn">Sign Up</a>
+        <a href="login.html" class="cta-btn outline">Login</a> -->
+        <button onclick="scrollToSection('features-section')">Explore Features</button>
+      </div>
     </div>
   </section>
 
@@ -90,18 +94,6 @@
         <span>– Laura, SeaView Resort</span>
       </div>
     </div>
-  </section>
-
-  <!-- Signup Section -->
-  <section id="signup-section">
-    <h2>Get Started with NexStay</h2>
-    <p>Create your hotel account now and start managing bookings instantly.</p>
-    <form id="signup-form">
-      <input type="text" placeholder="User Name" required/>
-      <input type="email" placeholder="Email Address" required/>
-      <input type="password" placeholder="Create Password" required/>
-      <button type="submit">Create Account</button>
-    </form>
   </section>
 
   <!-- Footer -->

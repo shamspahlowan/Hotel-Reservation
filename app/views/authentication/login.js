@@ -19,8 +19,6 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         error.textContent = "Password must be at least 6 characters.";
         return;
     }
-
-   
     error.style.color = "green";
     error.textContent = "Login successful!";
 });

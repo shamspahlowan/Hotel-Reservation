@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $message = "Password must be at least 6 characters.";
         } else {
             $_SESSION['status'] = 'true';
-            header("Location: ../../views/Dashboard/dashboard.html");
+            header("Location: ../../views/Dashboard/dashboard.php");
             exit;
         }
     }

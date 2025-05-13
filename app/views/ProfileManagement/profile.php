@@ -17,16 +17,21 @@ if (!isset($_SESSION['status'])) {
   <div class="profile-container">
     <h2>My Profile</h2>
 
-    <div class="avatar-box">
+    <!-- <div class="avatar-box">
       <img id="avatar" src="default-avatar.png" alt="Profile Picture" />
-      <input type="file" id="avatarUpload" accept="image/*" />
-    </div>
+      <input type="file" id="avatarUpload" accept="image/*"/>
+    </div> -->
 
-    <form id="profileForm">
-      <input type="text" id="name" value="John Doe" disabled />
-      <input type="email" id="email" value="john@example.com" disabled />
-      <button type="button" id="editBtn">Edit Profile</button>
-      <button type="submit" id="saveBtn" style="display:none;">Save Changes</button>
+    <form id="profileForm" action="../../controllers/profileManagement/uploadProfilePic.php" method="POST" enctype="multipart/form-data">
+      <div class="avatar-box">
+        <img id="avatar" src="default-avatar.png" alt="Profile Picture" />
+        <input type="file" id="avatarUpload" name="avatarUpload" accept="image/*" />
+      </div>
+      <input type="text" id="name" name="name" value="John Doe" disabled />
+      <input type="email" id="email" name="email" value="john@example.com" disabled />
+
+
+      <button type="submit" id="saveBtn">Save Changes</button>
     </form>
 
     <button onclick="togglePasswordBox()">Change Password</button>

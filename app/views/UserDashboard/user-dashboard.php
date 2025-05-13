@@ -5,9 +5,9 @@ if (!isset($_SESSION['status'])) {
     header("Location: ../../views/authentication/login.php");
     exit;
 }
-$username = htmlspecialchars($_SESSION['username'] ?? 'User');
+$username = htmlspecialchars($_SESSION['username'] ?? 'Shams');
 $userPoints = intval($_SESSION['points'] ?? 0);
-$userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png'; // Ensure this path exists
+$userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
 ?>
 <!DOCTYPE html>
 <html lang="en">

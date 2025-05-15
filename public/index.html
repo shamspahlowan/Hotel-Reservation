@@ -1,107 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NexStay | Smart Hotel Reservations</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-  <!-- Navigation -->
-  <header id="main-header">
-    <nav id="navbar">
-      <div id="brand">NexStay</div>
-      <ul>
-        <li><a href="#about-section">About</a></li>
-        <li><a href="#features-section">Features</a></li>
-        <li><a href="#testimonials-section">Testimonials</a></li>
-        <li><a href="../app/views/authentication/signup.php">Sign Up</a></li>
-        <li><a href="../app/views/authentication/login.php">Login</a></li>
-      </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexStay | Reservations Reimagined</title>
+    <link rel="stylesheet" href="design.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container nav-container">
+        <div class="logo">NexStay</div>
+        <ul class="nav-links">
+          <!-- <li><a href="#">Home</a></li> -->
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Rooms</a></li>
+          <li><a href="#">Experiences</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="../app/views/authentication/login.php" class="btn-login"
+            >Log In</a
+          >
+          <a href="../app/views/authentication/temp.html" class="btn-signup"
+            >Sign Up</a
+          >
+        </div>
+      </div>
     </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="landing-section">
-    <div class="hero-carousel" id="hero-carousel">
-      <!-- Dynamic images will be injected here -->
-    </div>
-    <div class="landing-content">
-      <h1>Your Smart Hotel Booking System</h1>
-      <p>Streamline reservations, boost occupancy, and enhance guest experiences with NexStay.</p>
-      <div class="cta-buttons">
-        <!-- <a href="signup.html" class="cta-btn">Sign Up</a>
-        <a href="login.html" class="cta-btn outline">Login</a> -->
-        <button onclick="scrollToSection('features-section')">Explore Features</button>
+    <!-- Image Slider Section -->
+    <section class="image-slider">
+      <div class="slider-container">
+        <div class="slider-track">
+          <!-- Images will be populated by JavaScript -->
+        </div>
+        <div class="slider-controls">
+          <button class="slider-prev" aria-label="Previous slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div class="slider-pagination"></div>
+          <button class="slider-next" aria-label="Next slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about-section">
-    <h2>About NexStay</h2>
-    <p>NexStay is a hotel management and booking system built to make the process easier for guests and hotel admins alike. With powerful analytics, role-based access, and real-time reservations, it's built for performance and simplicity.</p>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Reservations Reimagined</h1>
+        <p>A beautifully simple way to book extraordinary hotel experiences.</p>
 
-  <!-- Features Section -->
-  <section id="features-section">
-    <h2>Powerful Features</h2>
-    <div class="feature-list">
-      <div class="feature-card">
-        <h3>Real-Time Bookings</h3>
-        <p>Instant booking confirmations and live availability updates.</p>
+        <!-- Search Box -->
+        <div class="search-box">
+          <div class="search-input">
+            <label>Destination</label>
+            <input type="text" placeholder="Where are you going?" />
+          </div>
+          <div class="search-input">
+            <label>Check In</label>
+            <input type="date" />
+          </div>
+          <div class="search-input">
+            <label>Check Out</label>
+            <input type="date" />
+          </div>
+          <div class="search-input">
+            <label>Guests</label>
+            <select>
+              <option>1 Adult</option>
+              <option>2 Adults</option>
+              <option>2 Adults, 1 Child</option>
+              <option>2 Adults, 2 Children</option>
+              <option>More options</option>
+            </select>
+          </div>
+          <button class="search-button">Search Rooms</button>
+        </div>
       </div>
-      <div class="feature-card">
-        <h3>Role-Based Access</h3>
-        <p>Control who can access what. Admins, editors, and users.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Analytics Dashboard</h3>
-        <p>View occupancy, revenue, and performance trends visually.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Mobile Ready</h3>
-        <p>Optimized UI works seamlessly across all devices.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Secure Storage</h3>
-        <p>Data encrypted with daily backup support for safety.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Carousel Section -->
-  <section id="carousel-section">
-    <h2>Gallery</h2>
-    <div class="carousel-wrapper" id="carousel-wrapper"></div>
-  </section>
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <div class="features-headline">
+          <h2>Accommodations Designed for You</h2>
+          <p>
+            Experience stays that are beautiful in their simplicity and powerful
+            in their comfort.
+          </p>
+        </div>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials-section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>"NexStay transformed our operations. Fast, simple, efficient."</p>
-        <span>– Olivia, Aurora Inn</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"I love the dashboards and role control system. Brilliant."</p>
-        <span>– Raj, Sapphire Hotels</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"A huge step up from our old system. Highly recommended."</p>
-        <span>– Laura, SeaView Resort</span>
-      </div>
-    </div>
-  </section>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-image">
+              <img src="assets/room7.jpg" alt="Luxury Room" />
+            </div>
+            <div class="feature-content">
+              <h3>Luxury Suites</h3>
+              <p>
+                Spacious rooms with minimalist design and maximum comfort. Every
+                detail considered.
+              </p>
+              <a href="#" class="feature-link">Explore luxury suites →</a>
+            </div>
+          </div>
 
-  <!-- Footer -->
-  <footer id="main-footer">
-    <p>&copy; 2025 NexStay. All rights reserved.</p>
-    <p><a href="#main-header">Back to top</a></p>
-  </footer>
+          <div class="feature-card">
+            <div class="feature-image">
+              <img src="assets/room5.jpg" alt="Smart Room" />
+            </div>
+            <div class="feature-content">
+              <h3>Smart Rooms</h3>
+              <p>
+                Control lighting, temperature, and entertainment with our
+                integrated room system.
+              </p>
+              <a href="#" class="feature-link">Discover smart features →</a>
+            </div>
+          </div>
 
-  <script src="index.js"></script>
-</body>
+          <div class="feature-card">
+            <div class="feature-image">
+              <img src="assets/room6.jpg" alt="Dining Experience" />
+            </div>
+            <div class="feature-content">
+              <h3>Fine Dining</h3>
+              <p>
+                Exceptional culinary experiences crafted with locally sourced
+                ingredients.
+              </p>
+              <a href="#" class="feature-link">View dining options →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Guests Are Saying</h2>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "The most intuitive hotel experience I've ever had. From booking to
+            checkout, everything was seamless."
+          </p>
+          <p class="testimonial-author">— Sarah J., New York</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>NexStay</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Newsroom</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Investors</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Reservations</h4>
+            <ul>
+              <li><a href="#">Book a Room</a></li>
+              <li><a href="#">Modify Reservation</a></li>
+              <li><a href="#">Check Status</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Locations</h4>
+            <ul>
+              <li><a href="#">North America</a></li>
+              <li><a href="#">Europe</a></li>
+              <li><a href="#">Asia Pacific</a></li>
+              <li><a href="#">Find a Hotel</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Rewards Program</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Sales Policy</a>
+            <a href="#">Legal</a>
+            <a href="#">Site Map</a>
+          </div>
+          <div>Copyright © 2025 NexStay Hotels. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

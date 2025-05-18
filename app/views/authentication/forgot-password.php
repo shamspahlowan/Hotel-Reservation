@@ -1,9 +1,7 @@
 <?php
-session_start();
 
 $error = '';
 $success = '';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
 

@@ -1,5 +1,9 @@
 <?php
-// reset-password.php
+session_start();
+if (!isset($_SESSION['status'])) {
+    header("Location: ../../views/authentication/login2.php");
+    exit;
+}
 $newPassword = $confirmPassword = "";
 $message = "";
 $color = "red";

@@ -3,8 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You</title>
-  <link rel="stylesheet" href="contact.css" />
+  <title>Thank You - NexStay</title>
+  <link rel="stylesheet" href="contact2.css" />
+  <style>
+    .contact-container h2 {
+      color: var(--success-color);
+    }
+
+    .contact-container p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .contact-container button {
+      margin-top: 20px;
+      background-color: var(--brand-color);
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .contact-container button:hover {
+      background-color: var(--brand-color-dark);
+    }
+  </style>
 </head>
 <body>
   <div class="contact-container">
@@ -15,6 +44,7 @@
     <p id="userMessage"></p>
     <button onclick="goBack()">Back to Contact</button>
   </div>
+
   <script>
     const data = JSON.parse(localStorage.getItem("contactSubmission"));
     if (data) {
@@ -24,7 +54,7 @@
     }
 
     function goBack() {
-      window.location.href = "contact.html";
+      window.location.href = "dashboard.php";
     }
   </script>
 </body>

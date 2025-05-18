@@ -12,23 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format.";
     } else {
-        // TODO: Check if the email exists in your user database
-        // Example mock check:
-        $mockRegisteredEmail = "test@example.com";
+        $mockRegisteredEmail = "test@example.com"; // Simulated check
 
         if ($email === $mockRegisteredEmail) {
-            // Simulate generating and sending a verification code
             $verificationCode = rand(100000, 999999);
 
-            // Save to session and/or cookie
             $_SESSION['reset_email'] = $email;
             $_SESSION['verification_code'] = $verificationCode;
-
-            // Optionally store in a cookie (expires in 5 minutes)
             setcookie("reset_email", $email, time() + 300, "/");
-
-            // Simulate sending email (implement in real app)
-            // mail($email, "Your Verification Code", "Code: $verificationCode");
 
             header("Location: verify-code.php");
             exit;
@@ -44,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forgot Password - Hotel Reservation</title>
+  <title>Forgot Password - NexStay</title>
   <link rel="stylesheet" href="forgot-password.css" />
 </head>
 <body>
@@ -54,16 +45,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="email" name="email" id="email" placeholder="Enter your registered email" required />
 
       <?php if ($error): ?>
-        <p class="error"><?php echo htmlspecialchars($error); ?></p>
+        <p class="error"><?= htmlspecialchars($error) ?></p>
       <?php endif; ?>
 
       <?php if ($success): ?>
-        <p class="success"><?php echo htmlspecialchars($success); ?></p>
+        <p class="success"><?= htmlspecialchars($success) ?></p>
       <?php endif; ?>
 
-      <input type="submit" name="submit" value="Submit">
+      <button type="submit" name="submit">Submit</button>
     </form>
-    <p class="link">Back to <a href="login.php">Login</a></p>
+    <p class="link">Back to <a href="login2.php">Login</a></p>
   </div>
 
   <script src="forgot-password.js"></script>

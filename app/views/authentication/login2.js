@@ -1,40 +1,31 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const error = document.getElementById("error");
 
-  
     error.textContent = '';
+    error.classList.remove("success");
 
-   
     if (!validateEmail(email)) {
+        e.preventDefault();
         error.textContent = "Please enter a valid email.";
         return;
     }
 
-    
     if (password.length < 6) {
+        e.preventDefault();
         error.textContent = "Password must be at least 6 characters.";
         return;
     }
-    error.style.color = "green";
-    error.textContent = "Login successful!";
+
+    error.style.color = "var(--success-color)";
+    error.textContent = "Login successful! (Client-side)";
 });
 
 function validateEmail(email) {
-    const emailParts = email.split('@');
-    if (emailParts.length !== 2) return false;
+    const parts = email.split('@');
+    if (parts.length !== 2 || !parts[0] || !parts[1]) return false;
 
-    const [username, domain] = emailParts;
-    if (!username || !domain) return false;
-
-    const domainParts = domain.split('.');
-    if (domainParts.length !== 2) return false;
-
-    const [subdomain, com] = domainParts;
-    if (!subdomain || !com) return false;
-
-    return true;
+    const domainParts = parts[1].split('.');
+    return domainParts.length >= 2 && !domainParts.includes('');
 }

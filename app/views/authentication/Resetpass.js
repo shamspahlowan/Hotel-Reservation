@@ -1,23 +1,23 @@
 document.getElementById('resetForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-  
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+    const newPassword = document.getElementById('newPassword').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
     const error = document.getElementById('error');
-  
+
     error.textContent = '';
-  
+    error.style.color = 'var(--error-color)';
+
     if (newPassword.length < 6) {
-      error.textContent = "Password must be at least 6 characters.";
-      return;
+        e.preventDefault();
+        error.textContent = "Password must be at least 6 characters.";
+        return;
     }
-  
+
     if (newPassword !== confirmPassword) {
-      error.textContent = "Passwords do not match.";
-      return;
+        e.preventDefault();
+        error.textContent = "Passwords do not match.";
+        return;
     }
-  
-    error.style.color = "green";
-    error.textContent = "Password reset successful! (Simulated)";
-  });
-  
+
+    error.style.color = 'var(--success-color)';
+    error.textContent = "Password reset successful! (Client-side)";
+});

@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     </form>
 
     <p class="link">
-      Don't have an account? <a href="#">Sign Up</a><br />
+      Don't have an account? <a href="signup2.php">Sign Up</a><br />
       <a href="forgot-password.php">Forgot Password?</a>
     </p>
   </div>

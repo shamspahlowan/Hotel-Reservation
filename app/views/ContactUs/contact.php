@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($captcha !== '5') {
         $error = "CAPTCHA is incorrect.";
     } else {
-        // Simulated success (redirect to thank you page)
+        
         header("Location: contact-submitted.html");
         exit;
     }

@@ -1,56 +1,86 @@
-document.getElementById("signupForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('signupForm');
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirm = document.getElementById('confirmPassword');
+    const passwordStrengthBar = document.querySelector('.password-strength-bar');
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const error = document.getElementById("error");
-    const errorSuccess = document.getElementById("errorSuccess");
-
-    error.textContent = '';
-    errorSuccess.textContent = '';
-
-    
-    if (name.length < 2) {
-        error.textContent = "Name must be at least 2 characters.";
-        return;
+    function isValidEmail(email) {
+        // Basic email validation
+        return email.includes("@") && email.includes(".") && email.length >= 5;
     }
 
-    
-    if (!validateEmail(email)) {
-        error.textContent = "Enter a valid email.";
-        return;
+    function getPasswordStrength(password) {
+        let hasUpper = false, hasLower = false, hasNumber = false, hasSymbol = false;
+
+        for (let i = 0; i < password.length; i++) {
+            const char = password[i];
+            const code = char.charCodeAt(0);
+
+            if (code >= 65 && code <= 90) hasUpper = true;
+            else if (code >= 97 && code <= 122) hasLower = true;
+            else if (code >= 48 && code <= 57) hasNumber = true;
+            else hasSymbol = true;
+        }
+
+        let score = 0;
+        if (password.length >= 6) score++;
+        if (password.length >= 10) score++;
+        if (hasUpper && hasLower) score++;
+        if (hasNumber) score++;
+        if (hasSymbol) score++;
+
+        return score;
     }
 
-    
-    if (password.length < 6) {
-        error.textContent = "Password must be at least 6 characters.";
-        return;
-    }
+    password.addEventListener('input', function () {
+        const strength = getPasswordStrength(password.value);
+        passwordStrengthBar.className = 'password-strength-bar';
 
-    
-    if (password !== confirmPassword) {
-        error.textContent = "Passwords do not match.";
-        return;
-    }
+        if (password.value === '') {
+            passwordStrengthBar.style.width = '0';
+        } else if (strength <= 2) {
+            passwordStrengthBar.classList.add('weak');
+        } else if (strength <= 4) {
+            passwordStrengthBar.classList.add('medium');
+        } else {
+            passwordStrengthBar.classList.add('strong');
+        }
+    });
 
-    
-    errorSuccess.textContent = "Signup successful! (Simulated)";
+    form.addEventListener('submit', function (e) {
+        const errors = [];
+
+        if (name.value.trim().length < 2) {
+            errors.push("Name must be at least 2 characters.");
+        }
+
+        if (!isValidEmail(email.value)) {
+            errors.push("Invalid email address.");
+        }
+
+        if (password.value.length < 6) {
+            errors.push("Password must be at least 6 characters.");
+        }
+
+        if (password.value !== confirm.value) {
+            errors.push("Passwords do not match.");
+        }
+
+        const errorBox = document.querySelector('.error');
+        if (errorBox) errorBox.innerHTML = '';
+
+        if (errors.length > 0) {
+            e.preventDefault();
+            if (errorBox) {
+                errorBox.classList.add('active');
+                errors.forEach(err => {
+                    const li = document.createElement('li');
+                    li.textContent = err;
+                    errorBox.appendChild(li);
+                });
+            }
+        }
+    });
 });
-
-function validateEmail(email) {
-    const emailParts = email.split('@');
-    if (emailParts.length !== 2) return false;
-
-    const [username, domain] = emailParts;
-    if (!username || !domain) return false;
-
-    const domainParts = domain.split('.');
-    if (domainParts.length !== 2) return false;
-
-    const [subdomain, com] = domainParts;
-    if (!subdomain || !com) return false;
-
-    return true;
-}

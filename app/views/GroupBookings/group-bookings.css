@@ -99,7 +99,6 @@ body {
   border-radius: var(--radius);
   padding: 2rem;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
 }
 
 h1 {
@@ -115,6 +114,41 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+.tab:hover {
+  background: rgba(0, 122, 255, 0.1);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
 .input-group {
   margin-bottom: 1rem;
 }
@@ -127,7 +161,9 @@ label {
 }
 
 select,
+input[type="date"],
 input[type="text"],
+input[type="email"],
 input[type="number"] {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -167,43 +203,52 @@ button:active {
   transform: translateY(0);
 }
 
-.split-entry {
+.guest-entry {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
   align-items: center;
 }
 
-.split-entry input {
+.guest-entry input[type="text"],
+.guest-entry input[type="email"] {
   flex: 1;
-  min-width: 150px;
+  min-width: 200px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+.guest-entry button {
+  width: auto;
+  padding: 0.75rem 1.5rem;
 }
 
-th,
-td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-th {
-  font-weight: 600;
-  color: var(--neutral);
+.remove-guest {
+  background: var(--danger);
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  width: auto;
 }
 
-td {
-  font-size: 0.95rem;
+.room-selection {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.result,
-.receipt {
+.room-selection select {
+  flex: 2;
+}
+
+.room-selection input[type="number"] {
+  flex: 1;
+  min-width: 100px;
+}
+
+.room-selection button {
+  width: auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.result {
   margin-top: 1rem;
   padding: 1rem;
   background: rgba(0, 122, 255, 0.1);
@@ -232,13 +277,25 @@ td {
     text-align: center;
   }
 
-  .split-entry {
+  .tabs {
+    flex-direction: column;
+  }
+
+  .guest-entry,
+  .room-selection {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .split-entry input {
+  .guest-entry input[type="text"],
+  .guest-entry input[type="email"],
+  .room-selection input[type="number"] {
     min-width: 100%;
+  }
+
+  .guest-entry button,
+  .room-selection button {
+    width: 100%;
   }
 
   h1 {

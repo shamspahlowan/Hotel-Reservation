@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header("Location: ../../views/authentication/login.php");
+    header("Location: ../../views/authentication/login2.php");
     exit;
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                header("Location: ../../views/profileManagement/profile.php?msg=Profile picture updated successfully.");
+                header("../../views/profileManagement/profile.php?msg=Profile picture updated successfully.");
             } else {
                 echo "Error moving the file.";
             }

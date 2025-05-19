@@ -1,4 +1,6 @@
 <?php
+session_start(); // Required to use $_SESSION
+
 $email = $password = "";
 $message = "";
 $color = "red";
@@ -27,8 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         } elseif (strlen($password) < 6) {
             $message = "Password must be at least 6 characters.";
         } else {
-            $message = "Login successful! (Server-side validation passed)";
-            $color = "green";
+            // ✅ Login successful — set session and redirect
+            $_SESSION['status'] = true;
+            header("Location: ../../views/UserDashboard/user-dashboard.php");
+            exit;
         }
     }
 }
@@ -60,6 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     </p>
   </div>
 
-  <script src=login2.js></script>
+  <script src="login2.js"></script>
 </body>
 </html>

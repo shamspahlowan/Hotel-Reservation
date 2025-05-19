@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['verification_code'] = $verificationCode;
             setcookie("reset_email", $email, time() + 300, "/");
 
-            header("Location: verify-code.php");
+            header("Location: email-verification.php");
             exit;
         } else {
             $error = "This email is not registered.";

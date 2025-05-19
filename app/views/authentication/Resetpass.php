@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     } elseif ($newPassword !== $confirmPassword) {
         $message = "Passwords do not match.";
     } else {
-        $message = "Password reset successful! (Server-side validation passed)";
+        $message = "Password reset successful!";
         $color = "green";
     }
 }

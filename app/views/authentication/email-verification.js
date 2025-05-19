@@ -1,6 +1,3 @@
-// email-verification.js (optional - if used for client-side assistance)
-// This version only runs if you are still using client-side localStorage for fallback display
-
 const showEmailEl = document.getElementById("showEmail");
 if (showEmailEl && localStorage.getItem("userEmail")) {
   showEmailEl.textContent = localStorage.getItem("userEmail");

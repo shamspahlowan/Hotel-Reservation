@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         } elseif (strlen($password) < 6) {
             $message = "Password must be at least 6 characters.";
         } else {
-            // ✅ Login successful — set session and redirect
             $_SESSION['status'] = true;
             header("Location: ../../views/UserDashboard/user-dashboard.php");
             exit;

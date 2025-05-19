@@ -1,84 +1,135 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header("Location: ../../views/authentication/login2.php");
-    exit;
+  header("Location: ../../views/authentication/login2.php");
+  exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Group Bookings</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking | NexStay</title>
+  <link rel="stylesheet" href="group-bookings.css" />
+
 </head>
+
 <body>
-  <section id="group-manager">
-    <h2>Group Manager</h2>
-    <button id="new-group-btn">New Group Booking</button>
-    <ul id="groups-list"></ul>
-  </section>
+  <header class="navbar">
+    <div class="nav-brand">NexStay</div>
+    <div class="nav-profile">
+      <img src="default-avatar.png" alt="Profile Picture" />
+      <div class="info">
+        <div class="name">Shams</div>
+        <div class="points">0 Points</div>
+      </div>
+      <button onclick="window.location.href='logout.html'">Logout</button>
+    </div>
+  </header>
 
-  <section id="room-block-tool">
-    <h2>Room Block Tool</h2>
-    <form id="room-block-form" novalidate>
-      <div class="form-group">
-        <label for="group-id">Group ID:</label>
-        <input type="text" id="group-id" name="groupId" required />
-      </div>
-      <div class="form-group">
-        <label for="num-rooms"># of Rooms:</label>
-        <input type="number" id="num-rooms" name="numRooms" min="1" required />
-      </div>
-      <div class="form-group">
-        <label for="room-type">Room Type:</label>
-        <select id="room-type" name="roomType">
-          <option value="single">Single</option>
-          <option value="double">Double</option>
-          <option value="suite">Suite</option>
-        </select>
-      </div>
-      <button type="submit">Block Rooms</button>
-    </form>
-  </section>
+  <div class="main">
+    <h1>Book Your Stay</h1>
 
-  <section id="payment-terms">
-    <h2>Payment Terms</h2>
-    <form id="terms-form" novalidate>
-      <div class="form-group">
-        <label for="deposit-rate">Deposit Rate (%):</label>
-        <input type="number" id="deposit-rate" name="depositRate" min="0" max="100" required />
+    <div class="container">
+      <div class="tabs">
+        <div class="tab active" onclick="showTab('single-booking')">Single Booking</div>
+        <div class="tab" onclick="showTab('group-booking')">Group Booking</div>
       </div>
-      <div class="form-group">
-        <label for="due-date">Final Payment Due:</label>
-        <input type="date" id="due-date" name="dueDate" required />
-      </div>
-      <button type="submit">Set Terms</button>
-    </form>
-  </section>
 
-  <section id="event-planner">
-    <h2>Event Planner</h2>
-    <form id="event-form" novalidate>
-      <div class="form-group">
-        <label for="event-name">Event Name:</label>
-        <input type="text" id="event-name" name="eventName" required />
+      <div id="single-booking" class="tab-content active">
+        <h2>Single Booking</h2>
+        <div class="input-group">
+          <label for="single-hotel">Hotel</label>
+          <select id="single-hotel">
+            <option value="oceanview">Oceanview Resort ($200/night)</option>
+            <option value="cityscape">Cityscape Hotel ($150/night)</option>
+            <option value="mountainlodge">Mountain Lodge ($180/night)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="single-room">Room Type</label>
+          <select id="single-room">
+            <option value="standard">Standard ($100/night)</option>
+            <option value="deluxe">Deluxe ($150/night)</option>
+            <option value="suite">Suite ($200/night)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="single-checkin">Check-in Date</label>
+          <input type="date" id="single-checkin" min="2025-05-19" />
+        </div>
+        <div class="input-group">
+          <label for="single-checkout">Check-out Date</label>
+          <input type="date" id="single-checkout" />
+        </div>
+        <button onclick="submitSingleBooking()">Book Now</button>
+        <div id="single-result" class="result"></div>
       </div>
-      <div class="form-group">
-        <label for="event-date">Event Date:</label>
-        <input type="date" id="event-date" name="eventDate" required />
-      </div>
-      <div class="form-group">
-        <label for="space-type">Space Type:</label>
-        <select id="space-type" name="spaceType">
-          <option value="conference">Conference Room</option>
-          <option value="banquet">Banquet Hall</option>
-          <option value="outdoor">Outdoor Area</option>
-        </select>
-      </div>
-      <button type="submit">Plan Event</button>
-    </form>
-  </section>
 
-  <script src="group-bookings.js"></script>
+      <div id="group-booking" class="tab-content">
+        <h2>Group Booking</h2>
+        <div class="input-group">
+          <label for="group-hotel">Hotel</label>
+          <select id="group-hotel">
+            <option value="oceanview">Oceanview Resort ($200/night)</option>
+            <option value="cityscape">Cityscape Hotel ($150/night)</option>
+            <option value="mountainlodge">Mountain Lodge ($180/night)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="group-checkin">Check-in Date</label>
+          <input type="date" id="group-checkin" min="2025-05-19" />
+        </div>
+        <div class="input-group">
+          <label for="group-checkout">Check-out Date</label>
+          <input type="date" id="group-checkout" />
+        </div>
+        <div class="input-group">
+          <h2>Guests</h2>
+          <div id="guest-list"></div>
+          <div class="guest-entry">
+            <input type="text" id="guest-name" placeholder="Enter guest name" />
+            <input type="email" id="guest-email" placeholder="Enter guest email" />
+            <button onclick="addGuest()">Add Guest</button>
+          </div>
+        </div>
+        <div class="input-group">
+          <h2>Rooms</h2>
+          <div class="room-selection">
+            <select id="room-type">
+              <option value="standard">Standard ($100/night)</option>
+              <option value="deluxe">Deluxe ($150/night)</option>
+              <option value="suite">Suite ($200/night)</option>
+            </select>
+            <input type="number" id="room-quantity" placeholder="Quantity" min="1" />
+            <button onclick="addRoom()">Add Room</button>
+          </div>
+          <div id="room-list" class="result"></div>
+        </div>
+        <div class="input-group">
+          <label for="payment-terms">Payment Terms</label>
+          <select id="payment-terms">
+            <option value="full">Full Payment</option>
+            <option value="deposit">50% Deposit</option>
+            <option value="split">Split Billing</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="event-space">Event Space</label>
+          <select id="event-space">
+            <option value="none">None</option>
+            <option value="conference">Conference Room ($500)</option>
+            <option value="banquet">Banquet Hall ($1000)</option>
+          </select>
+        </div>
+        <button onclick="submitGroupBooking()">Book Group Stay</button>
+        <div id="group-result" class="result"></div>
+      </div>
+    </div>
+  </div>
+<script src="group-bookings.js"></script>
 </body>
+
 </html>

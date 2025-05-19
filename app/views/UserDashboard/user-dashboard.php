@@ -56,11 +56,11 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
         <div class="icon">🔍</div>
         <span>Search & Filter</span>
       </div>
-      <div class="link-card" id="conciergeBtn" style="display: none;" onclick="window.location.href='concierge.html'">
+      <div class="link-card" id="conciergeBtn" style="display: none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.html'">
         <div class="icon">🛎️</div>
         <span>Concierge Requests</span>
       </div>
-      <div class="link-card" onclick="window.location.href='billing.html'">
+      <div class="link-card" onclick="window.location.href='../../views/Billing/billing-summary.html'">
         <div class="icon">💳</div>
         <span>Billing Summary</span>
       </div>

@@ -1,90 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Review System</title>
-  <link rel="stylesheet" href="review-system.css">
-</head>
-<body>
-  <!-- Review Form Section -->
-  <section id="review-form-section" class="form-section">
-    <h2>Submit Your Review</h2>
-    <form id="review-form" novalidate>
-      <div class="form-group">
-        <label for="rating">Rating:</label>
-        <div id="star-rating" role="radiogroup" aria-label="Star Rating" data-rating="0">
-          <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1">☆</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="2">☆</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="3">☆</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="4">☆</span>
-          <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="5">☆</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NexStay Review System</title>
+    <link href="review-system.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="main-content">
+      <div class="dashboard-header">
+        <h1 class="page-title">Review Management</h1>
+        <div class="actions">
+          <input class="search-input" id="user-filter" placeholder="Filter by username..." type="text" oninput="filterReviews()" />
         </div>
-        <input type="hidden" name="rating" id="rating" />
       </div>
-
-      <div class="form-group">
-        <label for="comment">Comment:</label>
-        <textarea id="comment" name="comment" rows="5" placeholder="Tell us about your stay" required></textarea>
+      <!-- Reviews Table -->
+      <div class="table-container">
+        <div class="table-header">
+          <h2 class="table-title">User Reviews</h2>
+        </div>
+        <table class="table" id="reviews-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Status</th>
+              <th>Response</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="reviews-body">
+            <tr data-username="emma.johnson">
+              <td>emma.johnson</td>
+              <td>★★★★☆ (4)</td>
+              <td>Great stay, but Wi-Fi was slow.</td>
+              <td><span class="status status-success">Approved</span></td>
+              <td>Thanks for your feedback! We're upgrading our Wi-Fi.</td>
+              <td>
+                <button class="action-btn" onclick="openResponseForm('emma.johnson')">Respond</button>
+                <button class="action-btn" onclick="deleteReview('emma.johnson')">[Delete]</button>
+              </td>
+            </tr>
+            <tr data-username="michael.brown">
+              <td>michael.brown</td>
+              <td>★★★★★ (5)</td>
+              <td>Amazing experience!</td>
+              <td><span class="status status-pending">Pending</span></td>
+              <td>-</td>
+              <td>
+                <button class="action-btn" onclick="approveReview('michael.brown')">[Approve]</button>
+                <button class="action-btn" onclick="openResponseForm('michael.brown')">[Respond]</button>
+                <button class="action-btn" onclick="deleteReview('michael.brown')">[Delete]</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="form-group">
-        <label for="traveler-type">Traveler Type:</label>
-        <select id="traveler-type" name="travelerType" required>
-          <option value="">-- Select your travel style --</option>
-          <option value="solo">Solo</option>
-          <option value="couple">Couple</option>
-          <option value="family">Family</option>
-          <option value="business">Business</option>
-        </select>
+      <!-- Response Form -->
+      <div class="card response-form" id="response-form" style="display: none;">
+        <h3 class="form-title">Respond to Review</h3>
+        <form id="response-form-element" onsubmit="submitResponse(event)">
+          <input type="hidden" id="response-username" />
+          <textarea id="response-text" placeholder="Enter your response..." required></textarea>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" onclick="closeResponseForm()">Cancel</button>
+            <button type="submit" class="btn btn-primary">[Submit] Submit</button>
+          </div>
+        </form>
       </div>
-
-      <button type="submit">Submit Review</button>
-    </form>
-  </section>
-
-  <!-- Moderation Section -->
-  <section id="moderation-tool" class="moderation-section">
-    <h2>Comment Moderation</h2>
-    <button id="show-pending">Show Pending Reviews</button>
-    <ul id="pending-list"></ul>
-  </section>
-
-  <!-- Management Response Section -->
-  <section id="management-response" class="response-section">
-    <h2>Respond to Review</h2>
-    <form id="response-form">
-      <label for="response-id">Review ID:</label>
-      <input type="number" id="response-id" name="reviewId" min="1" required />
-
-      <label for="response-text">Your Response:</label>
-      <textarea id="response-text" name="responseText" rows="3" placeholder="Write response" required></textarea>
-
-      <button type="submit">Post Response</button>
-    </form>
-  </section>
-
-  <!-- Reviews List Section -->
-  <section id="reviews-list-section" class="reviews-list-section">
-    <h2>All Reviews</h2>
-    <label for="filter-type">Filter by Traveler Type:</label>
-    <select id="filter-type">
-      <option value="all">All</option>
-      <option value="solo">Solo</option>
-      <option value="couple">Couple</option>
-      <option value="family">Family</option>
-      <option value="business">Business</option>
-    </select>
-
-    <div id="reviews-pagination">
-      <button id="prev-page" disabled>&laquo; Prev</button>
-      <span id="page-num">Page 1</span>
-      <button id="next-page">Next &raquo;</button>
-    </div>
-
-    <ul id="reviews-list"></ul>
-  </section>
-
-  <script src="review-system.js"></script>
-</body>
+    </main>
+    <script src="review-system.js"></script>
+  </body>
 </html>

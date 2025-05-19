@@ -14,9 +14,7 @@ preferencesForm.addEventListener("submit", function (e) {
   };
   localStorage.setItem("guestPreferences", JSON.stringify(preferences));
   saveMsg.textContent = "Preferences saved successfully!";
-  saveMsg.style.color = "green";
 });
-
 
 window.addEventListener("load", () => {
   const saved = JSON.parse(localStorage.getItem("guestPreferences"));
@@ -25,11 +23,9 @@ window.addEventListener("load", () => {
     floor.value = saved.floor;
     view.value = saved.view;
   }
-
   renderHistory();
   updateLoyalty();
 });
-
 
 const stays = [
   { room: "Deluxe Room", dates: "2024-03-10 to 2024-03-12", amount: 300 },

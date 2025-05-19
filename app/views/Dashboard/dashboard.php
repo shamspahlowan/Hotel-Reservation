@@ -1,8 +1,8 @@
 <?php
  session_start();
  if (!isset($_SESSION['status'])) {
-     header("Location: ../../views/authentication/login.php");
-    //  session_destroy();
+     header("Location: ../../views/authentication/login2.php");
+
      exit;
  }
 ?>

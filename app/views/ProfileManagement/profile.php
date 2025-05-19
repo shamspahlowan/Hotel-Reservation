@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header("Location: ../../views/authentication/login.php");
+    header("Location: ../../views/authentication/login2.php");
     exit;
 }
 ?>
@@ -16,24 +16,19 @@ if (!isset($_SESSION['status'])) {
 <body>
   <div class="profile-container">
     <h2>My Profile</h2>
-
-    <!-- <div class="avatar-box">
-      <img id="avatar" src="default-avatar.png" alt="Profile Picture" />
-      <input type="file" id="avatarUpload" accept="image/*"/>
-    </div> -->
-
     <form id="profileForm" action="../../controllers/profileManagement/uploadProfilePic.php" method="POST" enctype="multipart/form-data">
       <div class="avatar-box">
-        <img id="avatar" src="default-avatar.png" alt="Profile Picture" />
+        <img id="avatar" src="../../public/images/default-avatar.png" alt="Profile Picture" />
         <input type="file" id="avatarUpload" name="avatarUpload" accept="image/*" />
       </div>
+
       <input type="text" id="name" name="name" value="John Doe" disabled />
       <input type="email" id="email" name="email" value="john@example.com" disabled />
-
 
       <button type="submit" id="saveBtn">Save Changes</button>
     </form>
 
+    <button id="editBtn">Edit Profile</button>
     <button onclick="togglePasswordBox()">Change Password</button>
 
     <div id="passwordBox" style="display:none;">

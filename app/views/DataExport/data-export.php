@@ -1,9 +1,16 @@
+<?php
+$error = '';
+$success = '';
+
+// No server POST processing for export, but validation could go here if needed
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Data Export</title>
+  <title>Data Export - NexStay</title>
   <link rel="stylesheet" href="data-export.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -31,12 +38,10 @@
             <th>Amount ($)</th>
           </tr>
         </thead>
-        <tbody id="tableBody">
-        </tbody>
+        <tbody id="tableBody"></tbody>
       </table>
     </div>
   </div>
-
   <script src="data-export.js"></script>
 </body>
 </html>

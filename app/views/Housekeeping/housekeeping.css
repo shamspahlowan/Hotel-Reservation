@@ -1,96 +1,118 @@
+/* housekeeping.css */
+:root {
+  --brand-color: #FF9ECD;
+  --brand-color-dark: #DC85B0;
+  --highlight: #007BFF;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fb;
-    padding: 30px;
-  }
-  
-  .housekeeping-container {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-  }
-  
-  h2, h3 {
-    text-align: center;
-    color: #007BFF;
-  }
-  
-  .room-board {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .room-card {
-    background: #f0f6ff;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 0 6px rgba(0,0,0,0.05);
-    position: relative;
-  }
-  
-  .status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    color: white;
-    margin-top: 10px;
-  }
-  
-  .status.cleaned { background-color: #28a745; }
-  .status.in-progress { background-color: #ffc107; color: #000; }
-  .status.needs-cleaning { background-color: #dc3545; }
-  
-  button {
-    margin-top: 10px;
-    padding: 8px 14px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .progress-bar {
-    margin-top: 10px;
-    height: 10px;
-    background: #e0e0e0;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  
-  .progress-fill {
-    height: 100%;
-    background: #007BFF;
-    width: 0%;
-    transition: width 0.4s;
-  }
-  
-  form {
-    margin-top: 30px;
-  }
-  
-  form label {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  
-  #reportMsg {
-    color: green;
-    margin-top: 10px;
-  }
-  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at center, #ffffff, #f4f7fb);
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.housekeeping-container {
+  max-width: 900px;
+  background: white;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+h2, h3 {
+  text-align: center;
+  color: var(--highlight);
+  margin-bottom: 1rem;
+}
+
+.room-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.room-card {
+  background: #f0f6ff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: white;
+  margin-top: 10px;
+}
+
+.status.cleaned { background-color: var(--success-color); }
+.status.in-progress { background-color: var(--warning-color); color: #000; }
+.status.needs-cleaning { background-color: var(--danger-color); }
+
+button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: var(--brand-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--brand-color-dark);
+}
+
+.progress-bar {
+  margin-top: 10px;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--highlight);
+  width: 0%;
+  transition: width 0.4s;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+#reportMsg {
+  color: var(--success-color);
+  margin-top: 10px;
+  font-weight: 500;
+}

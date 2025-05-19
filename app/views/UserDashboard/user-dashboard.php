@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header("Location: ../../views/authentication/login.php");
+    header("Location: ../../views/authentication/login2.php");
     exit;
 }
 $username = htmlspecialchars($_SESSION['username'] ?? 'Shams');

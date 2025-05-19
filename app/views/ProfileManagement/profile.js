@@ -1,3 +1,4 @@
+// profile.js
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const editBtn = document.getElementById("editBtn");
@@ -11,10 +12,10 @@ editBtn.addEventListener("click", function () {
 });
 
 document.getElementById("profileForm").addEventListener("submit", function (e) {
-  e.preventDefault();
   const name = nameInput.value.trim();
 
   if (name.length < 2) {
+    e.preventDefault();
     showMessage("Name must be at least 2 characters.", "red");
     return;
   }
@@ -56,7 +57,7 @@ document.getElementById("avatarUpload").addEventListener("change", function () {
   const file = this.files[0];
   if (file) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       document.getElementById("avatar").src = e.target.result;
     };
     reader.readAsDataURL(file);

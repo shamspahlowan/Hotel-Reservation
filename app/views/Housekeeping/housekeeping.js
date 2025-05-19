@@ -1,7 +1,8 @@
+// housekeeping.js
+
 const roomBoard = document.getElementById("roomBoard");
 const reportForm = document.getElementById("reportForm");
 const reportMsg = document.getElementById("reportMsg");
-
 
 let rooms = [
   { number: 101, status: "cleaned" },

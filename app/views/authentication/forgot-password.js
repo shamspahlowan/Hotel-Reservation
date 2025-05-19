@@ -18,5 +18,5 @@ document.getElementById("forgotForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // If valid, allow server to handle it
+ 
 });

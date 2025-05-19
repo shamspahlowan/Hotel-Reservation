@@ -1,9 +1,13 @@
+<?php
+// guest-profile.php – Profile page with localStorage and simulated history
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guest Profile</title>
+  <title>Guest Profile - NexStay</title>
   <link rel="stylesheet" href="guest-profile.css" />
 </head>
 <body>

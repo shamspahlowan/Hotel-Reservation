@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
@@ -12,7 +11,7 @@ if (!isset($_SESSION['status'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cancellation Policy | NexStay</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cancellation-policy.css" />
 </head>
 <body>
   <div class="container">
@@ -39,7 +38,7 @@ if (!isset($_SESSION['status'])) {
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="cancellation-policy.js"></script>
 </body>
 </html>
 

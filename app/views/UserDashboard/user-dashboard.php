@@ -32,11 +32,11 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
   <div class="content">
     <div class="sidebar">
       <h2>Menu</h2>
-      <div class="link-card" onclick="window.location.href='guest-profile.html'">
+      <div class="link-card" onclick="window.location.href='../../views/guest-profile/guest-profile.php'">
         <div class="icon">👤</div>
         <span>Profile</span>
       </div>
-      <div class="link-card" onclick="window.location.href='edit-profile.html'">
+      <div class="link-card" onclick="window.location.href='../../views/profileManagement/profile.php'">
         <div class="icon">✏️</div>
         <span>Edit Profile</span>
       </div>
@@ -48,11 +48,11 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
         <div class="icon">✉️</div>
         <span>Contact Us</span>
       </div>
-      <div class="link-card" onclick="window.location.href='cancellation-policy.html'">
+      <div class="link-card" onclick="window.location.href='../../views/Cancellation/cancellation-policy.php'">
         <div class="icon">🚫</div>
         <span>Cancellation</span>
       </div>
-      <div class="link-card" onclick="window.location.href='search-filter.html'">
+      <div class="link-card" onclick="window.location.href='../../views/Search&Filter/search.php'">
         <div class="icon">🔍</div>
         <span>Search & Filter</span>
       </div>

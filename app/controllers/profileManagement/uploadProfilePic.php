@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (in_array($fileExtension, $allowedExtensions)) {
-            $newFileName = 'avatar_' . '.' . $fileExtension;
+            $newFileName = 'avatar'. $fileExtension;
             $uploadFileDir = '../../uploads/avatars/';
             $dest_path = $uploadFileDir . $newFileName;
 

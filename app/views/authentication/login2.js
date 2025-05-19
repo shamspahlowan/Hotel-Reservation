@@ -19,7 +19,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     }
 
     error.style.color = "var(--success-color)";
-    error.textContent = "Login successful! (Client-side)";
+    error.textContent = "Login successful!";
 });
 
 function validateEmail(email) {

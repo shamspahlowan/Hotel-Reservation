@@ -59,7 +59,7 @@ searchBox.addEventListener("input", () => {
   renderAmenities(filtered);
 });
 
-// Initial render (respect initial PHP search if passed)
+
 if (typeof initialSearch !== 'undefined' && initialSearch.length > 0) {
   searchBox.value = initialSearch;
   const term = initialSearch.toLowerCase();

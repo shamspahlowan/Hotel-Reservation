@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format.";
     } else {
-        $mockRegisteredEmail = "test@example.com"; // Simulated check
+        $mockRegisteredEmail = "test@example.com"; 
 
         if ($email === $mockRegisteredEmail) {
             $verificationCode = rand(100000, 999999);

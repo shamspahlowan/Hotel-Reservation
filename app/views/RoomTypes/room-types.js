@@ -1,4 +1,4 @@
-// room-types.js
+
 const rooms = [
   {
     name: "City Comfort",

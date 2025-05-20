@@ -108,7 +108,7 @@ function initializeSearch() {
     roomType.value = inferredType;
   }
 
-  // Trigger initial filter
+
   filterRooms();
 }
 
@@ -118,5 +118,5 @@ priceRange.addEventListener("change", filterRooms);
 wifiCheck.addEventListener("change", filterRooms);
 acCheck.addEventListener("change", filterRooms);
 
-// Initialize search with query parameters
+
 document.addEventListener("DOMContentLoaded", initializeSearch);

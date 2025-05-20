@@ -13,9 +13,9 @@
         <div class="logo">NexStay</div>
         <ul class="nav-links">
           <!-- <li><a href="#">Home</a></li> -->
-          <li><a href="#">Destinations</a></li>
-          <li><a href="#">Rooms</a></li>
-          <li><a href="#">Experiences</a></li>
+          <li><a href="#features">Destinations</a></li>
+          <li><a href="#features">Rooms</a></li>
+          <li><a href="#testimonials">Experiences</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
         <div class="auth-buttons">
@@ -32,9 +32,7 @@
     <!-- Image Slider Section -->
     <section class="image-slider">
       <div class="slider-container">
-        <div class="slider-track">
-          <!-- Images will be populated by JavaScript -->
-        </div>
+        <div class="slider-track"></div>
         <div class="slider-controls">
           <button class="slider-prev" aria-label="Previous slide">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -70,22 +68,26 @@
         <p>A beautifully simple way to book extraordinary hotel experiences.</p>
 
         <!-- Search Box -->
-        <div class="search-box">
+        <div class="search-box" id="search-form">
           <div class="search-input">
-            <label>Destination</label>
-            <input type="text" placeholder="Where are you going?" />
+            <label for="destination">Destination</label>
+            <input
+              type="text"
+              id="destination"
+              placeholder="Where are you going?"
+            />
           </div>
           <div class="search-input">
-            <label>Check In</label>
-            <input type="date" />
+            <label for="checkin">Check In</label>
+            <input type="date" id="checkin" />
           </div>
           <div class="search-input">
-            <label>Check Out</label>
-            <input type="date" />
+            <label for="checkout">Check Out</label>
+            <input type="date" id="checkout" />
           </div>
           <div class="search-input">
-            <label>Guests</label>
-            <select>
+            <label for="guests">Guests</label>
+            <select id="guests">
               <option>1 Adult</option>
               <option>2 Adults</option>
               <option>2 Adults, 1 Child</option>
@@ -93,13 +95,13 @@
               <option>More options</option>
             </select>
           </div>
-          <button class="search-button">Search Rooms</button>
+          <button class="search-button" id="search-button">Search Rooms</button>
         </div>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
       <div class="container">
         <div class="features-headline">
           <h2>Accommodations Designed for You</h2>
@@ -156,7 +158,7 @@
     </section>
 
     <!-- Testimonial Section -->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonials">
       <div class="container">
         <h2>What Guests Are Saying</h2>
 

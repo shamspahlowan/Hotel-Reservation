@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Configuration
   const sliderConfig = {
     images: [
       {
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
     transitionSpeed: 500,
   };
 
-  // Elements
   const sliderTrack = document.querySelector(".slider-track");
   const pagination = document.querySelector(".slider-pagination");
   const prevButton = document.querySelector(".slider-prev");
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let slideCount = sliderConfig.images.length;
   let autoplayInterval;
 
-  // Initialize slider
   function initSlider() {
     sliderConfig.images.forEach((image, index) => {
       const slide = document.createElement("div");
@@ -126,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(autoplayInterval);
   }
 
-  // Search form handler
   const searchForm = document.getElementById("search-form");
   const searchButton = document.getElementById("search-button");
   searchButton.addEventListener("click", function (event) {
@@ -144,6 +140,5 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = `search.?${params.toString()}`;
   });
 
-  // Initialize the slider
   initSlider();
 });

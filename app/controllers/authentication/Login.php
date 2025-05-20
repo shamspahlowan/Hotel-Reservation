@@ -34,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         if ($email === "admin@admin.com" && $password === "123456") {
             echo "admin!";
             $_SESSION["isAdmin"] = "true";
-            header("Location: ../../views/AdminPanel/admin.php");
+            header("location: ../../views/AdminPanel/admin.php");
             exit;
         } else {
             $_SESSION["status"] = "true";
-            header("Location: ../../views/UserDashboard/user-dashboard.php");
+            header("location: ../../views/UserDashboard/user-dashboard.php");
             exit;
         }
     }

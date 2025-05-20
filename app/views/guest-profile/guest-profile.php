@@ -1,7 +1,10 @@
 <?php
-// guest-profile.php – Profile page with localStorage and simulated history
+session_start();
+if (!isset($_SESSION['status'])) {
+    header("Location: ../../views/authentication/login2.php");
+    exit;
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,6 @@
   <div class="profile-container">
     <h2>Guest Profile</h2>
 
-    <!-- Preferences -->
     <section>
       <h3>Room Preferences</h3>
       <form id="preferencesForm">
@@ -43,7 +45,6 @@
       </form>
     </section>
 
-    <!-- Stay History -->
     <section>
       <h3>Stay History</h3>
       <table>
@@ -54,7 +55,6 @@
       </table>
     </section>
 
-    <!-- Loyalty -->
     <section>
       <h3>Loyalty Dashboard</h3>
       <p><strong>Total Points:</strong> <span id="points">0</span></p>

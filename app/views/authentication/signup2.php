@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
-    // Server-side validation
     if (strlen($name) < 2) {
         $errors[] = "Name must be at least 2 characters.";
     }
@@ -28,12 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        // Simulate storing user info, set cookie/session
         $success = "Signup successful!";
         setcookie("user_email", $email, time() + 3600, "/");
+        setcookie("user_pass", $password,time() + 3600, "/");
         $_SESSION['user_name'] = $name;
+        // $_SESSION['status'] = "true";
 
-        // Redirect or further processing can go here
+        header("location: ../../views/authentication/login2.php");
+        exit;
+
     }
 }
 ?>
@@ -79,4 +81,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="signup.js"></script>
 </body>
 </html>
-<?php
+<?

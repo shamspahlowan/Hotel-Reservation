@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordStrengthBar = document.querySelector('.password-strength-bar');
 
     function isValidEmail(email) {
-        // Basic email validation
         return email.includes("@") && email.includes(".") && email.length >= 5;
     }
 

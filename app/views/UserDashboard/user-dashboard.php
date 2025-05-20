@@ -20,12 +20,12 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
   <header class="navbar">
     <div class="nav-brand">NexStay</div>
     <div class="nav-profile">
-      <img src="default-avatar.png" alt="Profile Picture" />
+      <img src="../../../public/assets/defaultProfileImage.png" alt="Profile Picture" />
       <div class="info">
         <div class="name">Shams</div>
         <div class="points">0 Points</div>
       </div>
-      <button onclick="window.location.href='logout.html'">Logout</button>
+      <button onclick="window.location.href='../../controllers/authentication/logout.php'">Logout</button>
     </div>
   </header>
 

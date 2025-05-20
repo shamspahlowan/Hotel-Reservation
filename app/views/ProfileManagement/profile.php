@@ -18,7 +18,7 @@ if (!isset($_SESSION['status'])) {
     <h2>My Profile</h2>
     <form id="profileForm" action="../../controllers/profileManagement/uploadProfilePic.php" method="POST" enctype="multipart/form-data">
       <div class="avatar-box">
-        <img id="avatar" src="../../public/images/default-avatar.png" alt="Profile Picture" />
+        <img id="avatar" src="../../../public/assets/defaultProfileImage.png" alt="Profile Picture" />
         <input type="file" id="avatarUpload" name="avatarUpload" accept="image/*" />
       </div>
 

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (in_array($fileExtension, $allowedExtensions)) {
-            $newFileName = 'avatar'. $fileExtension;
+            $newFileName = 'avatar'.".". $fileExtension;
             $uploadFileDir = '../../uploads/avatars/';
             $dest_path = $uploadFileDir . $newFileName;
 
@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                header("../../views/profileManagement/profile.php?msg=Profile picture updated successfully.");
+                header("location: ../../views/UserDashboard/user-dashboard.php");
+                exit;
             } else {
                 echo "Error moving the file.";
             }

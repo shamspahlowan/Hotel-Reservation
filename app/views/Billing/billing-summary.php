@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['status'])) {
+    header("Location: ../../views/authentication/login2.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,7 @@
   <link rel="stylesheet" href="billing-summary.css">
 </head>
 <body>
-  <header class="navbar">
+  <!-- <header class="navbar">
     <div class="nav-brand">NexStay</div>
     <div class="nav-profile">
       <img src="default-avatar.png" alt="Profile Picture" />
@@ -17,7 +24,7 @@
       </div>
       <button onclick="window.location.href='logout.html'">Logout</button>
     </div>
-  </header>
+  </header> -->
 
   <div class="main">
     <h1>Billing</h1>

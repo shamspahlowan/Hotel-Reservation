@@ -123,22 +123,5 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(autoplayInterval);
   }
 
-  const searchForm = document.getElementById("search-form");
-  const searchButton = document.getElementById("search-button");
-  searchButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    const destination = document.getElementById("destination").value.trim();
-    const checkin = document.getElementById("checkin").value;
-    const checkout = document.getElementById("checkout").value;
-    const guests = document.getElementById("guests").value;
-    const params = new URLSearchParams({
-      destination: destination,
-      checkin: checkin,
-      checkout: checkout,
-      guests: guests
-    });
-    window.location.href = `search.?${params.toString()}`;
-  });
-
   initSlider();
 });

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
-    header("Location: ../../views/auth/login.php");
+    header("Location: ../../views/auth/login2.php");
     exit;
 }
 ?>

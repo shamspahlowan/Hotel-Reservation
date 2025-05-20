@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 <body>
   <div class="forgot-container">
     <h2>Reset Password</h2>
-    <form id="forgotForm" method="POST" action="../../views/authentication/login.html">
+    <form id="forgotForm" method="POST" action="../../views/authentication/login2.php">
       <input type="email" name="email" id="email" placeholder="Enter your registered email" required value="<?= htmlspecialchars($email) ?>" />
 
       <input type="password" name="new_password" placeholder="New Password" required />

@@ -17,7 +17,7 @@ if (!isset($_SESSION['status'])) {
 </head>
 
 <body>
-  <header class="navbar">
+  <!-- <header class="navbar">
     <div class="nav-brand">NexStay</div>
     <div class="nav-profile">
       <img src="default-avatar.png" alt="Profile Picture" />
@@ -27,7 +27,7 @@ if (!isset($_SESSION['status'])) {
       </div>
       <button onclick="window.location.href='logout.html'">Logout</button>
     </div>
-  </header>
+  </header> -->
 
   <div class="main">
     <h1>Book Your Stay</h1>

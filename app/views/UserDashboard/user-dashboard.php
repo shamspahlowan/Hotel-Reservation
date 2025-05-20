@@ -44,7 +44,7 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
         <div class="icon">🧑‍🤝‍🧑</div>
         <span>Group Booking</span>
       </div>
-      <div class="link-card" onclick="window.location.href='contact-us.html'">
+      <div class="link-card" onclick="window.location.href='../../views/ContactUs/contact.php'">
         <div class="icon">✉️</div>
         <span>Contact Us</span>
       </div>
@@ -56,11 +56,11 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
         <div class="icon">🔍</div>
         <span>Search & Filter</span>
       </div>
-      <div class="link-card" id="conciergeBtn" style="display: none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.html'">
+      <div class="link-card" id="conciergeBtn" style="display: none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.php'">
         <div class="icon">🛎️</div>
         <span>Concierge Requests</span>
       </div>
-      <div class="link-card" onclick="window.location.href='../../views/Billing/billing-summary.html'">
+      <div class="link-card" onclick="window.location.href='../../views/Billing/billing-summary.php'">
         <div class="icon">💳</div>
         <span>Billing Summary</span>
       </div>

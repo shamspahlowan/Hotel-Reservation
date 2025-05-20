@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $email = $_SESSION['reset_email'] ?? '';
 $code = $_SESSION['verification_code'] ?? '';
 $error = '';

@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $filter !== '') {
     </table>
   </div>
 
-  <!-- 360° Tour Modal -->
+  
   <div id="tourModal" class="modal">
     <div class="modal-content">
       <span onclick="closeModal()" class="close">&times;</span>

@@ -64,9 +64,9 @@ async function exportPDF() {
   doc.save("booking_data.pdf");
 }
 
-// Initial render
+
 renderTable(bookings);
 
-// Re-render when dates change
+
 document.getElementById("startDate").addEventListener("change", () => renderTable(filterData()));
 document.getElementById("endDate").addEventListener("change", () => renderTable(filterData()));

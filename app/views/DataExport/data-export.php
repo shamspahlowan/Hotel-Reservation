@@ -7,7 +7,7 @@ if (!isset($_SESSION['status'])) {
 $error = '';
 $success = '';
 
-// No server POST processing for export, but validation could go here if needed
+
 ?>
 
 <!DOCTYPE html>

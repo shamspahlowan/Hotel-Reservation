@@ -1,4 +1,4 @@
-// forgot-password.js
+
 document.getElementById("forgotForm").addEventListener("submit", function (e) {
   const email = document.getElementById("email").value.trim();
   const error = document.getElementById("error");

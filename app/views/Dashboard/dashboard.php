@@ -35,7 +35,7 @@
 
   <main id="dashboard-main">
 
-    <!-- Summary Widgets -->
+    
     <section id="summary-widgets">
       <div class="widget" onclick="showDetail('bookings')">
         <h3>Total Bookings</h3>
@@ -55,30 +55,30 @@
       </div>
     </section>
 
-    <!-- Analytics Overview -->
+   
     <section id="analytics-overview">
       <h2>Analytics Overview</h2>
 
-      <!-- Booking Trends Chart -->
+     
       <div class="chart-box">
         <h3>Booking Trends (7 Days)</h3>
         <div class="bar-chart" id="booking-trend-chart"></div>
       </div>
 
-      <!-- Room Occupancy Chart -->
+      
       <div class="chart-box">
         <h3>Room Occupancy</h3>
         <div class="bar-chart" id="occupancy-chart"></div>
       </div>
 
-      <!-- Revenue Breakdown -->
+     
       <div class="chart-box">
         <h3>Revenue Breakdown</h3>
         <div class="bar-chart" id="revenue-chart"></div>
       </div>
     </section>
 
-    <!-- Detail Panel -->
+
     <section id="details-panel">
       <h2>Detail View</h2>
       <div id="detail-content">

@@ -1,4 +1,4 @@
-// public/js/availability.js
+
 
 const rooms = [
   {

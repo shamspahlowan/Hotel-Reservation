@@ -31,10 +31,10 @@ function showDetail(type) {
   panel.innerHTML = html;
 }
 
-// Function to draw bar chart
+
 function drawBarChart(containerId, labels, values, maxVal) {
   const container = document.getElementById(containerId);
-  container.innerHTML = ''; // Clear previous
+  container.innerHTML = ''; 
 
   labels.forEach((label, i) => {
     const barWrapper = document.createElement('div');

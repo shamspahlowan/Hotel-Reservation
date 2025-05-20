@@ -1,4 +1,4 @@
-// contact.js
+
 
 document.getElementById("contactForm")?.addEventListener("submit", function (e) {
   const name = document.getElementById("name").value.trim();

@@ -4,6 +4,10 @@ if (!isset($_SESSION['status'])) {
     header("Location: ../../views/authentication/login2.php");
     exit;
 }
+if (!isset($_SESSION['status'])) {
+    header("Location: ../../views/authentication/login2.php");
+    exit;
+}
 $newPassword = $confirmPassword = "";
 $message = "";
 $color = "red";

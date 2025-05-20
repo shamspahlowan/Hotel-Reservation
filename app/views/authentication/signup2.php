@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setcookie("user_email", $email, time() + 3600, "/");
         setcookie("user_pass", $password,time() + 3600, "/");
         $_SESSION['user_name'] = $name;
-        // $_SESSION['status'] = "true";
+     
 
         header("location: ../../views/authentication/login2.php");
         exit;

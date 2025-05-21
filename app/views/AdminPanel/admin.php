@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
-    header("Location: ../../views/auth/login2.php");
+    header("Location: ../../views/authentication/login2.php");
     exit;
 }
 ?>
@@ -73,7 +73,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <h1 class="page-title">Dashboard</h1>
           <div class="actions">
             <button class="btn btn-outline">Export Report</button>
-            <button class="btn btn-primary">[+] Add Hotel</button>
+            <button class="btn btn-primary">Add Hotel</button>
           </div>
         </div>
         <!-- Stats Cards -->
@@ -136,8 +136,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>$420</td>
                 <td><span class="status status-success">Confirmed</span></td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Edit]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
                 </td>
               </tr>
               <tr>
@@ -149,8 +149,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>$1,250</td>
                 <td><span class="status status-pending">Pending</span></td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Edit]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
                 </td>
               </tr>
             </tbody>
@@ -162,7 +162,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
         <div class="dashboard-header">
           <h1 class="page-title">Roles & Permissions</h1>
           <div class="actions">
-            <button class="btn btn-primary">[+] Add New Role</button>
+            <button class="btn btn-primary">Add New Role</button>
           </div>
         </div>
         <!-- Admin Role Card -->
@@ -231,7 +231,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <h1 class="page-title">Hotel & Room Management</h1>
           <div class="actions">
             <button class="btn btn-outline">Filter</button>
-            <button class="btn btn-primary">[+] Add New Hotel</button>
+            <button class="btn btn-primary">Add New Hotel</button>
           </div>
         </div>
         <!-- Hotels Table -->
@@ -263,9 +263,9 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>4.8/5</td>
                 <td><span class="status status-success">Active</span></td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Edit]</button>
-                  <button class="action-btn">[Delete]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                  <button class="action-btn">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -294,8 +294,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>$89/night</td>
                 <td>Wi-Fi, TV, AC</td>
                 <td>
-                  <button class="action-btn">[Edit]</button>
-                  <button class="action-btn">[Delete]</button>
+                  <button class="action-btn">Edit</button>
+                  <button class="action-btn">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -308,7 +308,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <h1 class="page-title">Booking Management</h1>
           <div class="actions">
             <button class="btn btn-outline">Filter</button>
-            <button class="btn btn-primary">[+] Create Booking</button>
+            <button class="btn btn-primary">Create Booking</button>
           </div>
         </div>
         <!-- Booking Status Cards -->
@@ -367,8 +367,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>$420</td>
                 <td><span class="status status-success">Confirmed</span></td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Edit]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
                 </td>
               </tr>
             </tbody>
@@ -381,7 +381,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <h1 class="page-title">User Management</h1>
           <div class="actions">
             <button class="btn btn-outline">Filter</button>
-            <button class="btn btn-primary">[+] Add New User</button>
+            <button class="btn btn-primary">Add New User</button>
           </div>
         </div>
         <!-- User Stats Cards -->
@@ -446,9 +446,9 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>Jan 15, 2024</td>
                 <td>Today</td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Edit]</button>
-                  <button class="action-btn">[Key]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                  <button class="action-btn">Key</button>
                 </td>
               </tr>
             </tbody>
@@ -528,8 +528,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
                 <td>Credit Card</td>
                 <td><span class="status status-success">Completed</span></td>
                 <td>
-                  <button class="action-btn">[View]</button>
-                  <button class="action-btn">[Invoice]</button>
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Invoice</button>
                 </td>
               </tr>
             </tbody>

@@ -9,5 +9,5 @@ function showSection(sectionId) {
   document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.remove('active');
   });
-  document.querySelector(`.nav-item[href="#${sectionId}"]`).classList.add('active');
+  document.querySelector(`.nav-item a[href="#${sectionId}"]`).parentElement.classList.add('active');
 }

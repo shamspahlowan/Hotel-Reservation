@@ -1,9 +1,9 @@
 :root {
-    --brand-color: #FF9ECD;
-    --brand-color-light: #FFCFE6;
-    --brand-color-dark: #DC85B0;
-    --error-color: #ff3b30;
-    --success-color: #34c759;
+  --brand-color: #007aff;          
+  --brand-color-light: #6e6e73;    
+  --brand-color-dark: #1c2526;     
+  --error-color: #ff3b30;          
+  --success-color: #34c759; 
 }
 
 * {

@@ -1,64 +1,40 @@
 <?php
-$email = $newPassword = $retypePassword = "";
-$message = "";
-$color = "red";
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
-    $newPassword = $_POST['new_password'] ?? '';
-    $retypePassword = $_POST['retype_password'] ?? '';
 
-    if ($email === '') {
-        $message = "Email cannot be empty.";
+    if (empty($email)) {
+        $error = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format.";
     } else {
-        $parts = explode('@', $email);
-        if (count($parts) !== 2 || $parts[0] === '' || $parts[1] === '') {
-            $message = "Invalid email format.";
-        } else {
-            $domainParts = explode('.', $parts[1]);
-            if (count($domainParts) !== 2 || $domainParts[0] === '' || $domainParts[1] === '') {
-                $message = "Email must be in the valid format (e.g., example@domain.com).";
-            }
-        }
-    }
+        $mockRegisteredEmail = "test@example.com"; 
 
-    if (empty($message)) {
-        if ($newPassword === '' || $retypePassword === '') {
-            $message = "Password fields cannot be empty.";
-        } elseif ($newPassword !== $retypePassword) {
-            $message = "Passwords do not match.";
+        if ($email === $mockRegisteredEmail) {
+            $verificationCode = '123456'; 
+
+            $_SESSION['reset_email'] = $email;
+            $_SESSION['verification_code'] = $verificationCode;
+            $_SESSION['status'] = 'pending_verification';
+            setcookie("reset_email", $email, time() + 300, "/");
+
+            header("Location: ../../views/authentication/email-verification.php");
+            exit;
         } else {
-            $message = "Password reset successful!";
-            $color = "green";
+            $error = "This email is not registered.";
         }
     }
 }
+
+
+$_SESSION['error'] = $error;
+$_SESSION['success'] = $success;
+
+
+header("Location: ../../views/authentication/forgot_password.php");
+exit;
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forgot Password - Hotel Reservation</title>
-  <link rel="stylesheet" href="forgot-password.css" />
-</head>
-<body>
-  <div class="forgot-container">
-    <h2>Reset Password</h2>
-    <form id="forgotForm" method="POST" action="../../views/authentication/login2.php">
-      <input type="email" name="email" id="email" placeholder="Enter your registered email" required value="<?= htmlspecialchars($email) ?>" />
-
-      <input type="password" name="new_password" placeholder="New Password" required />
-      <input type="password" name="retype_password" placeholder="Retype New Password" required />
-
-      <?php if (!empty($message)): ?>
-        <p id="error" class="error" style="color: <?= $color ?>;"><?= $message ?></p>
-      <?php endif; ?>
-
-      <input type="submit" name="submit" value="Reset Password" />
-    </form>
-    </p>
-  </div>
-</body>
-</html>

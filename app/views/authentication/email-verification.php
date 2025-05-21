@@ -3,22 +3,12 @@ session_start();
 
 
 $email = $_SESSION['reset_email'] ?? '';
-$code = $_SESSION['verification_code'] ?? '';
-$error = '';
-$success = '';
+$error = $_SESSION['error'] ?? '';
+$success = $_SESSION['success'] ?? '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $enteredCode = trim($_POST['code'] ?? '');
 
-  if ($enteredCode === '') {
-    $error = "Please enter the verification code.";
-  } elseif ($enteredCode === $code) {
-    $success = "Email verified successfully! Redirecting...";
-    echo "<script>setTimeout(() => window.location.href = 'reset-password.php', 1500);</script>";
-  } else {
-    $error = "Invalid code. Please try again.";
-  }
-}
+unset($_SESSION['error']);
+unset($_SESSION['success']);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="verify-box">
     <h2>Email Verification</h2>
     <p>We've sent a 6-digit code to your email: <strong><?= htmlspecialchars($email) ?: '[unknown]' ?></strong></p>
-    <form method="POST" action="">
+    <form method="POST" action="../../controllers/authentication/email-verification.php">
       <input type="text" name="code" placeholder="Enter code" maxlength="6" required />
 
       <?php if ($error): ?>

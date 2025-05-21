@@ -1,13 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['status'])) {
-    header("Location: ../../views/authentication/login2.php");
+
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'verified') {
+    header("Location: forgot_password.php");
     exit;
 }
-// if (!isset($_SESSION['status'])) {
-//     header("Location: ../../views/authentication/login2.php");
-//     exit;
-// }
+
 $newPassword = $confirmPassword = "";
 $message = "";
 $color = "red";
@@ -25,6 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     } else {
         $message = "Password reset successful!";
         $color = "green";
+        // Clear session data after successful reset
+        unset($_SESSION['reset_email']);
+        unset($_SESSION['verification_code']);
+        unset($_SESSION['status']);
+        echo "<script>setTimeout(() => window.location.href = 'login2.php', 1500);</script>";
     }
 }
 ?>

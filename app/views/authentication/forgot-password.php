@@ -1,31 +1,13 @@
 <?php
+session_start();
 
-$error = '';
-$success = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
+// Retrieve error/success messages from session
+$error = $_SESSION['error'] ?? '';
+$success = $_SESSION['success'] ?? '';
 
-    if (empty($email)) {
-        $error = "Email is required.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Invalid email format.";
-    } else {
-        $mockRegisteredEmail = "test@example.com"; 
-
-        if ($email === $mockRegisteredEmail) {
-            $verificationCode = rand(100000, 999999);
-
-            $_SESSION['reset_email'] = $email;
-            $_SESSION['verification_code'] = $verificationCode;
-            setcookie("reset_email", $email, time() + 300, "/");
-
-            header("Location: email-verification.php");
-            exit;
-        } else {
-            $error = "This email is not registered.";
-        }
-    }
-}
+// Clear session messages after retrieval
+unset($_SESSION['error']);
+unset($_SESSION['success']);
 ?>
 
 <!DOCTYPE html>

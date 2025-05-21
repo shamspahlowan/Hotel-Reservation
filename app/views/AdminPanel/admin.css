@@ -341,6 +341,10 @@ body {
   display: block;
 }
 
+.content-section {
+  display: none;
+}
+
 .role-card {
   padding: 16px;
   margin-bottom: 16px;

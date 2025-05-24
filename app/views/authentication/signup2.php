@@ -1,4 +1,5 @@
 <?php
+require_once("../../models/UserModel.php");
 session_start();
 
 $errors = [];
@@ -32,6 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setcookie("user_pass", $password,time() + 3600, "/");
         $_SESSION['user_name'] = $name;
      
+        if(addUser(['username' => $name,
+            'email' => $email,
+            'password' => $password]))
+        {
+            echo "database updated!";
+        };
 
         header("location: ../../views/authentication/login2.php");
         exit;

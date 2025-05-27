@@ -80,3 +80,21 @@ function deleteUser($id)
     $sql = "DELETE FROM users WHERE id=$id";
     return mysqli_query($con, $sql);
 }
+function getUserByEmail($email) {
+    $con = getConnection();
+    $email = mysqli_real_escape_string($con, $email);
+    $sql = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+    $result = mysqli_query($con, $sql);
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        return $row;
+    }
+    return false;
+}
+
+function updateUserPasswordByEmail($email, $password) {
+    $con = getConnection();
+    $email = mysqli_real_escape_string($con, $email);
+    $password = mysqli_real_escape_string($con, $password);
+    $sql = "UPDATE users SET password='$password' WHERE email='$email' LIMIT 1";
+    return mysqli_query($con, $sql);
+}

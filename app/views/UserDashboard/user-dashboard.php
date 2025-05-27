@@ -4,9 +4,13 @@ if (!isset($_SESSION['status'])) {
     header("Location: ../../views/authentication/login2.php");
     exit;
 }
-$username = htmlspecialchars($_SESSION['username'] ?? 'Shams');
-$userPoints = intval($_SESSION['points'] ?? 0);
-$userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
+require_once('../../models/UserModel.php');
+require_once('../../models/LoyaltyModel.php');
+
+$user_id = $_SESSION['user_id'];
+$user = getUserById($user_id);
+$userPoints = function_exists('getUserPoints') ? getUserPoints($user_id) : 0;
+$userAvatar = $user['avatar'] ?? 'defaultProfileImage.png';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +24,10 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
   <header class="navbar">
     <div class="nav-brand">NexStay</div>
     <div class="nav-profile">
-      <img src="../../../public/assets/defaultProfileImage.png" alt="Profile Picture" />
+      <img src="../../../public/assets/<?php echo htmlspecialchars($userAvatar); ?>" alt="Profile Picture" />
       <div class="info">
-        <div class="name">Shams</div>
-        <div class="points">0 Points</div>
+        <div class="name"><?php echo htmlspecialchars($user['username']); ?></div>
+        <div class="points"><?php echo intval($userPoints); ?> Points</div>
       </div>
       <button onclick="window.location.href='../../controllers/authentication/logout.php'">Logout</button>
     </div>
@@ -56,7 +60,7 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
         <div class="icon">🔍</div>
         <span>Search & Filter</span>
       </div>
-      <div class="link-card" id="conciergeBtn" style="display: none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.php'">
+      <div class="link-card" id="conciergeBtn" style="display:none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.php'">
         <div class="icon">🛎️</div>
         <span>Concierge Requests</span>
       </div>
@@ -71,7 +75,7 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
       <div class="container">
         <div class="section">
           <h2>Current Stay</h2>
-          <div id="currentStay" class="result"></div>
+          <div id="currentStay" class="result">Loading...</div>
         </div>
 
         <div class="section">
@@ -87,7 +91,9 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              <tr><td colspan="6">Loading...</td></tr>
+            </tbody>
           </table>
         </div>
       </div>
@@ -97,8 +103,6 @@ $userAvatar = $_SESSION['avatar'] ?? 'default-avatar.png';
   <footer class="footer">
     © 2025 NexStay. All rights reserved.
   </footer>
-
   <script src="user-dashboard.js"></script>
 </body>
 </html>
-

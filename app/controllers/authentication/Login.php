@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             exit;
         } else {
             $_SESSION["status"] = "true";
+            $_SESSION["user_id"] = 2;
             header("location: ../../views/UserDashboard/user-dashboard.php");
             exit;
         }

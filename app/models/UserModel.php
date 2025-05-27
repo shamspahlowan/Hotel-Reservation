@@ -2,18 +2,16 @@
 require_once('db.php');
 
 // Login: returns user array if found, false otherwise
-function login($user)
-{
+function login($email, $password) {
     $con = getConnection();
-    $username = mysqli_real_escape_string($con, $user['username']);
-    $password = mysqli_real_escape_string($con, $user['password']);
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+    $email = mysqli_real_escape_string($con, $email);
+    $password = mysqli_real_escape_string($con, $password);
+    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password' LIMIT 1";
     $result = mysqli_query($con, $sql);
-    if ($row = mysqli_fetch_assoc($result)) {
+    if ($result && $row = mysqli_fetch_assoc($result)) {
         return $row;
-    } else {
-        return false;
     }
+    return false;
 }
 
 // Get user by ID

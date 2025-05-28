@@ -1,14 +1,14 @@
 <?php
 require_once('db.php');
 
-function getAllBookings() {
-    $con = getConnection();
-    $sql = "SELECT * FROM bookings";
-    $result = mysqli_query($con, $sql);
-    $bookings = [];
-    while ($row = mysqli_fetch_assoc($result)) $bookings[] = $row;
-    return $bookings;
-}
+// function getAllBookings() {
+//     $con = getConnection();
+//     $sql = "SELECT * FROM bookings";
+//     $result = mysqli_query($con, $sql);
+//     $bookings = [];
+//     while ($row = mysqli_fetch_assoc($result)) $bookings[] = $row;
+//     return $bookings;
+// }
 
 function getBookingById($id) {
     $con = getConnection();
@@ -31,6 +31,35 @@ function addBooking($booking) {
         return mysqli_insert_id($con); // Return booking ID for guest insert
     }
     return false;
+}
+
+function getRecentBookings($limit = 10) {
+    $con = getConnection();
+    $sql = "SELECT b.*, u.username as guest_name 
+            FROM bookings b 
+            LEFT JOIN users u ON b.user_id = u.id 
+            ORDER BY b.created_at DESC 
+            LIMIT $limit";
+    $result = mysqli_query($con, $sql);
+    $bookings = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $bookings[] = $row;
+    }
+    return $bookings;
+}
+
+function getAllBookings() {
+    $con = getConnection();
+    $sql = "SELECT b.*, u.username as guest_name 
+            FROM bookings b 
+            LEFT JOIN users u ON b.user_id = u.id 
+            ORDER BY b.created_at DESC";
+    $result = mysqli_query($con, $sql);
+    $bookings = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $bookings[] = $row;
+    }
+    return $bookings;
 }
 
 function updateBooking($id, $booking) {
@@ -62,5 +91,13 @@ function getBookingsByUser($user_id) {
     $bookings = [];
     while ($row = mysqli_fetch_assoc($result)) $bookings[] = $row;
     return $bookings;
+}
+
+function updateBookingStatus($booking_id, $status) {
+    $con = getConnection();
+    $booking_id = intval($booking_id);
+    $status = mysqli_real_escape_string($con, $status);
+    $sql = "UPDATE bookings SET status='$status' WHERE id=$booking_id";
+    return mysqli_query($con, $sql);
 }
 ?>

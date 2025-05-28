@@ -97,3 +97,11 @@ function updateUserPasswordByEmail($email, $password) {
     $sql = "UPDATE users SET password='$password' WHERE email='$email' LIMIT 1";
     return mysqli_query($con, $sql);
 }
+
+function updateUserRole($user_id, $role) {
+    $con = getConnection();
+    $user_id = intval($user_id);
+    $role = mysqli_real_escape_string($con, $role);
+    $sql = "UPDATE users SET role='$role' WHERE id=$user_id";
+    return mysqli_query($con, $sql);
+}

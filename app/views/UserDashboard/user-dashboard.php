@@ -46,7 +46,7 @@ $userAvatar = $user['avatar'] ?? 'defaultProfileImage.png';
       </div>
       <div class="link-card" onclick="window.location.href='../../views/GroupBookings/group-bookings.php'">
         <div class="icon">🧑‍🤝‍🧑</div>
-        <span>Group Booking</span>
+        <span>Booking</span>
       </div>
       <div class="link-card" onclick="window.location.href='../../views/ContactUs/contact.php'">
         <div class="icon">✉️</div>

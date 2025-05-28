@@ -1,1 +1,297 @@
-/* code */
+:root {
+  --brand-color: #007aff;
+  --brand-color-dark: #1c2526;
+  --highlight: #007aff;
+  --accent-light: #e9f3ff;
+  --background: #f0f2f5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--background);
+  padding: 2rem;
+  margin: 0;
+}
+
+.search-details {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.search-details p {
+  margin: 0.5rem 0;
+}
+
+.search-details strong {
+  color: var(--highlight);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .search-container {
+    padding: 1rem;
+  }
+
+  .search-details {
+    font-size: 0.9rem;
+  }
+}
+
+.search-container {
+  background: white;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: var(--highlight);
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 1rem;
+  background-color: rgba(245, 245, 247, 0.8);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--brand-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 158, 205, 0.2);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.results {
+  margin-top: 2rem;
+}
+
+.room-card {
+  background-color: var(--accent-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.room-card strong {
+  font-size: 1.1rem;
+  color: var(--highlight);
+}
+/* Add these styles to your existing search.css */
+
+.room-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    min-height: 200px;
+}
+
+.room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.room-image {
+    flex: 0 0 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.room-price {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--brand-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.room-price span {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.room-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--brand-color-dark);
+    font-size: 1.3rem;
+}
+
+.hotel-info strong {
+    color: var(--brand-color);
+    font-size: 1.1rem;
+}
+
+.hotel-info p {
+    margin: 0.25rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.room-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.75rem 0;
+}
+
+.stars {
+    color: #ffa500;
+    font-size: 1.1rem;
+}
+
+.rating-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.room-details {
+    flex: 1;
+    margin: 1rem 0;
+}
+
+.room-details p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.amenities {
+    margin-top: 1rem;
+}
+
+.amenity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.5rem;
+}
+
+.amenity-tag {
+    background: var(--accent-light);
+    color: var(--brand-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+.amenity-more {
+    color: #666;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.room-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.btn-primary {
+    background: var(--brand-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--brand-color);
+    border: 1px solid var(--brand-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-light);
+}
+
+.no-results, .error-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #666;
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--brand-color);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .room-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .room-image {
+        flex: none;
+        height: 200px;
+    }
+    
+    .room-actions {
+        flex-direction: column;
+    }
+}

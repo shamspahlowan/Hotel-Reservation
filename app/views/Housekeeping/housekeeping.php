@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!is_numeric($room) || $room < 1) {
         $reportMsg = "<span style='color: red;'>Room number must be a valid positive number.</span>";
     } else {
-        // Simulated success (you can save to DB here later)
+        
         $reportMsg = "<span style='color: green;'>Issue submitted for room $room.</span>";
     }
 }

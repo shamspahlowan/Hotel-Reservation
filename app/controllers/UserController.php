@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET
             'username' => $_POST['username'] ?? '',
             'password' => $_POST['password'] ?? ''
         ];
-        $result = login($user);
+        $result = login($user["username"], $user['password']);
         if ($result) {
             session_start();
             $_SESSION['user_id'] = $result['id'];

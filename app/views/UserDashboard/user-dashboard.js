@@ -1,14 +1,23 @@
 function fetchUserBookings() {
-  console.log("runs");
-  fetch('../../controllers/BookingController.php?action=getBookingsByUser', {
-    credentials: 'include'
-  })
-    .then(res => res.json())
-    .then(data => {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open('GET', '../../controllers/BookingController.php?action=getBookingsByUser', true);
+  xhttp.withCredentials = true;
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let data;
+      try {
+        data = JSON.parse(this.responseText);
+      } catch (e) {
+        document.getElementById("currentStay").textContent = "Error loading bookings.";
+        document.getElementById("conciergeBtn").style.display = "none";
+        document.querySelector("#bookingHistory tbody").innerHTML = "<tr><td colspan='6'>Error loading bookings.</td></tr>";
+        return;
+      }
+
       // Find current stay (confirmed or pending, checkout_date >= today)
       let currentStay = null;
       const today = new Date().toISOString().slice(0, 10);
-      data.forEach(b => {
+      data.forEach(function(b) {
         if (
           (b.status === 'confirmed' || b.status === 'pending') &&
           b.checkout_date >= today &&
@@ -39,7 +48,7 @@ function fetchUserBookings() {
       const tbody = document.querySelector("#bookingHistory tbody");
       tbody.innerHTML = "";
       if (data.length > 0) {
-        data.forEach(b => {
+        data.forEach(function(b) {
           const row = document.createElement("tr");
           row.innerHTML = `
             <td>#BK${b.id}</td>
@@ -54,7 +63,9 @@ function fetchUserBookings() {
       } else {
         tbody.innerHTML = "<tr><td colspan='6'>No bookings found.</td></tr>";
       }
-    });
+    }
+  };
+  xhttp.send();
 }
 
 window.onload = function () {

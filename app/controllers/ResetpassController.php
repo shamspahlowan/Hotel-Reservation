@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: text/plain');
-require_once('../../models/UserModel.php');
+require_once('../models/UserModel.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
     $data = json_decode($_POST['json'], true);

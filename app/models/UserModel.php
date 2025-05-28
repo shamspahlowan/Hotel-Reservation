@@ -1,7 +1,6 @@
 <?php
 require_once('db.php');
 
-// Login: returns user array if found, false otherwise
 function login($email, $password) {
     $con = getConnection();
     $email = mysqli_real_escape_string($con, $email);

@@ -24,7 +24,7 @@ $userAvatar = $user['avatar'] ?? 'defaultProfileImage.png';
   <header class="navbar">
     <div class="nav-brand">NexStay</div>
     <div class="nav-profile">
-      <img src="../../../public/assets/<?php echo htmlspecialchars($userAvatar); ?>" alt="Profile Picture" />
+      <img src="../../<?php echo $user['avatar']; ?>">
       <div class="info">
         <div class="name"><?php echo htmlspecialchars($user['username']); ?></div>
         <div class="points"><?php echo intval($userPoints); ?> Points</div>
@@ -36,10 +36,10 @@ $userAvatar = $user['avatar'] ?? 'defaultProfileImage.png';
   <div class="content">
     <div class="sidebar">
       <h2>Menu</h2>
-      <div class="link-card" onclick="window.location.href='../../views/guest-profile/guest-profile.php'">
+      <!-- <div class="link-card" onclick="window.location.href='../../views/guest-profile/guest-profile.php'">
         <div class="icon">👤</div>
         <span>Profile</span>
-      </div>
+      </div> -->
       <div class="link-card" onclick="window.location.href='../../views/profileManagement/profile.php'">
         <div class="icon">✏️</div>
         <span>Edit Profile</span>

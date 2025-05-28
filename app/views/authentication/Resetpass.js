@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let data = JSON.stringify(json);
 
     let xhttp = new XMLHttpRequest();
-    xhttp.open('POST', '../../controllers/authentication/ResetpassController.php', true);
+    xhttp.open('POST', '../../controllers/ResetpassController.php', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('json=' + data);
     xhttp.onreadystatechange = function () {

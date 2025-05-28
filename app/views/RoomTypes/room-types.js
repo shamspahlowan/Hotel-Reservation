@@ -36,8 +36,8 @@ function renderRooms(filter) {
                 <p><strong>Category:</strong> ${room.category}</p>
                 <p><strong>Amenities:</strong> ${room.amenities.join(", ")}</p>
                 <div class="room-buttons">
-                    <button onclick="window.location.href='360-view.php'">360 View</button>
-                    <button onclick="window.location.href='../view/Billing/billing-summary.php">Book Room</button>
+                    <button onclick="window.location.href=''">360 View</button>
+                    
                 </div>
             </div>
         `;

@@ -228,6 +228,7 @@ function calculateNights(checkIn, checkOut) {
     return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 }
 
+// SINGLE BOOKING FUNCTION (FIXED)
 async function submitSingleBooking() {
     const hotelId = document.getElementById('single-hotel').value;
     const roomType = document.getElementById('single-room').value;
@@ -235,159 +236,8 @@ async function submitSingleBooking() {
     const checkOut = document.getElementById('single-checkout').value;
     const result = document.getElementById('single-result');
 
-    if (!hotelId || !roomType || !checkIn || !checkOut) {
-        result.innerHTML = '<span class="highlight">Please fill all fields.</span>';
-        return;
-    }
-
-    const currentDate = new Date().toISOString().split('T')[0];
-    if (checkIn < currentDate || checkOut <= checkIn) {
-        result.innerHTML = '<span class="highlight">Invalid dates. Check-in must be today or later, and check-out must be after check-in.</span>';
-        return;
-    }
-
-    // Find available room of selected type
-    const availableRoom = rooms.find(r => r.type === roomType);
-    if (!availableRoom) {
-        result.innerHTML = '<span class="highlight">No rooms of selected type available.</span>';
-        return;
-    }
-
-    try {
-        result.innerHTML = 'Processing booking...';
-        
-        const bookingData = {
-            action: 'createSingleBooking',
-            room_id: availableRoom.id,
-            checkin_date: checkIn,
-            checkout_date: checkOut,
-            guests: 1,
-            special_requests: ''
-        };
-
-        const response = await fetch('../../controllers/BookingController.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bookingData)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            const hotel = hotels.find(h => h.id == hotelId);
-            const nights = calculateNights(checkIn, checkOut);
-            
-            result.innerHTML = `
-                <strong>✅ Booking Confirmed!</strong><br>
-                Booking Reference: <strong>${data.booking_reference || 'N/A'}</strong><br>
-                Hotel: ${hotel.name}<br>
-                Room: ${availableRoom.type} Room<br>
-                Check-in: ${checkIn}<br>
-                Check-out: ${checkOut}<br>
-                Nights: ${nights}<br>
-                Total Cost: <span class="highlight">$${data.total_amount}</span><br>
-                <br>
-                <button onclick="window.location.href='../Billing/payment.php?booking_id=${data.booking_id}'">
-                    Proceed to Payment
-                </button>
-            `;
-        } else {
-            result.innerHTML = `<span class="highlight">❌ ${data.message}</span>`;
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        result.innerHTML = '<span class="highlight">❌ Failed to create booking. Please try again.</span>';
-    }
-}
-
-async function submitGroupBooking() {
-    const hotelId = document.getElementById('group-hotel').value;
-    const checkIn = document.getElementById('group-checkin').value;
-    const checkOut = document.getElementById('group-checkout').value;
-    const paymentTerms = document.getElementById('payment-terms').value;
-    const eventSpace = document.getElementById('event-space').value;
-    const result = document.getElementById('group-result');
-
-    if (!hotelId || !checkIn || !checkOut || guests.length === 0 || selectedRooms.length === 0) {
-        result.innerHTML = '<span class="highlight">Please fill all fields, add at least one guest, and select at least one room.</span>';
-        return;
-    }
-
-    const currentDate = new Date().toISOString().split('T')[0];
-    if (checkIn < currentDate || checkOut <= checkIn) {
-        result.innerHTML = '<span class="highlight">Invalid dates. Check-in must be today or later, and check-out must be after check-in.</span>';
-        return;
-    }
-
-    try {
-        result.innerHTML = 'Processing group booking...';
-        
-        const bookingData = {
-            action: 'createGroupBooking',
-            hotel_id: hotelId,
-            checkin_date: checkIn,
-            checkout_date: checkOut,
-            rooms: selectedRooms,
-            guests: guests,
-            payment_terms: paymentTerms,
-            event_space: eventSpace,
-            special_requests: ''
-        };
-
-        const response = await fetch('../../controllers/BookingController.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bookingData)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            const hotel = hotels.find(h => h.id == hotelId);
-            const nights = calculateNights(checkIn, checkOut);
-            const guestList = guests.map(g => `${g.name} (${g.email})`).join('<br>');
-            const roomSummary = selectedRooms.map(r => `${r.quantity} x ${r.type} Room`).join('<br>');
-            
-            result.innerHTML = `
-                <strong>✅ Group Booking Confirmed!</strong><br>
-                Group Reference: <strong>${data.group_reference}</strong><br>
-                Hotel: ${hotel.name}<br>
-                Check-in: ${checkIn}<br>
-                Check-out: ${checkOut}<br>
-                Nights: ${nights}<br>
-                Guests:<br>${guestList}<br>
-                Rooms:<br>${roomSummary}<br>
-                Payment Terms: ${paymentTerms}<br>
-                Event Space: ${eventSpace}<br>
-                Total Cost: <span class="highlight">$${data.total_amount}</span><br>
-                <br>
-                <button onclick="window.location.href='../Billing/payment.php?booking_id=${data.booking_ids[0]}&group=true'">
-                    Proceed to Payment
-                </button>
-            `;
-        } else {
-            result.innerHTML = `<span class="highlight">❌ ${data.message}</span>`;
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        result.innerHTML = '<span class="highlight">❌ Failed to create group booking. Please try again.</span>';
-    }
-}
-
-function showError(message) {
-    console.error(message);
-    // You can add a more sophisticated error display here
-}
-
-// Add this function to handle special requests in single booking
-async function submitSingleBooking() {
-    const hotelId = document.getElementById('single-hotel').value;
-    const roomType = document.getElementById('single-room').value;
-    const checkIn = document.getElementById('single-checkin').value;
-    const checkOut = document.getElementById('single-checkout').value;
-    const guests = document.getElementById('single-guests').value;
-    const specialRequests = document.getElementById('single-requests').value;
-    const result = document.getElementById('single-result');
+    // Debug: Log the values
+    console.log('Form values:', { hotelId, roomType, checkIn, checkOut });
 
     if (!hotelId || !roomType || !checkIn || !checkOut) {
         result.innerHTML = '<span class="highlight">Please fill all required fields.</span>';
@@ -419,9 +269,11 @@ async function submitSingleBooking() {
             room_id: availableRoom.id,
             checkin_date: checkIn,
             checkout_date: checkOut,
-            guests: parseInt(guests),
-            special_requests: specialRequests
+            guests: 1, // Default to 1 guest since the form field doesn't exist yet
+            special_requests: '' // Default empty since the form field doesn't exist yet
         };
+
+        console.log('Sending booking data:', bookingData);
 
         const response = await fetch('../../controllers/BookingController.php', {
             method: 'POST',
@@ -430,6 +282,7 @@ async function submitSingleBooking() {
         });
 
         const data = await response.json();
+        console.log('Response data:', data);
 
         if (data.success) {
             const hotel = hotels.find(h => h.id == hotelId);
@@ -443,8 +296,7 @@ async function submitSingleBooking() {
                 <strong>Check-in:</strong> ${checkIn}<br>
                 <strong>Check-out:</strong> ${checkOut}<br>
                 <strong>Nights:</strong> ${nights}<br>
-                <strong>Guests:</strong> ${guests}<br>
-                ${specialRequests ? `<strong>Special Requests:</strong> ${specialRequests}<br>` : ''}
+                <strong>Guests:</strong> 1<br>
                 <strong>Total Cost:</strong> <span class="highlight">$${data.total_amount}</span><br>
                 <br>
                 <button onclick="window.location.href='../Billing/payment.php?booking_id=${data.booking_id}'" class="book-btn">
@@ -463,15 +315,16 @@ async function submitSingleBooking() {
     }
 }
 
-// Update the group booking function to handle special requests
+// GROUP BOOKING FUNCTION (FIXED)
 async function submitGroupBooking() {
     const hotelId = document.getElementById('group-hotel').value;
     const checkIn = document.getElementById('group-checkin').value;
     const checkOut = document.getElementById('group-checkout').value;
     const paymentTerms = document.getElementById('payment-terms').value;
     const eventSpace = document.getElementById('event-space').value;
-    const specialRequests = document.getElementById('group-requests').value;
     const result = document.getElementById('group-result');
+
+    console.log('Group booking values:', { hotelId, checkIn, checkOut, guestsCount: guests.length, roomsCount: selectedRooms.length });
 
     if (!hotelId || !checkIn || !checkOut || guests.length === 0 || selectedRooms.length === 0) {
         result.innerHTML = '<span class="highlight">Please fill all required fields, add at least one guest, and select at least one room.</span>';
@@ -499,8 +352,10 @@ async function submitGroupBooking() {
             guests: guests,
             payment_terms: paymentTerms,
             event_space: eventSpace,
-            special_requests: specialRequests
+            special_requests: ''
         };
+
+        console.log('Sending group booking data:', bookingData);
 
         const response = await fetch('../../controllers/BookingController.php', {
             method: 'POST',
@@ -509,6 +364,7 @@ async function submitGroupBooking() {
         });
 
         const data = await response.json();
+        console.log('Group response data:', data);
 
         if (data.success) {
             const hotel = hotels.find(h => h.id == hotelId);
@@ -527,7 +383,6 @@ async function submitGroupBooking() {
                 <strong>Rooms:</strong><br>${roomSummary}<br>
                 <strong>Payment Terms:</strong> ${paymentTerms}<br>
                 <strong>Event Space:</strong> ${eventSpace}<br>
-                ${specialRequests ? `<strong>Special Requests:</strong> ${specialRequests}<br>` : ''}
                 <strong>Total Cost:</strong> <span class="highlight">$${data.total_amount}</span><br>
                 <br>
                 <button onclick="window.location.href='../Billing/payment.php?booking_id=${data.booking_ids[0]}&group=true'" class="book-btn">
@@ -544,4 +399,8 @@ async function submitGroupBooking() {
         result.innerHTML = '<span class="highlight">❌ Failed to create group booking. Please try again.</span>';
         result.className = 'result error';
     }
+}
+
+function showError(message) {
+    console.error(message);
 }

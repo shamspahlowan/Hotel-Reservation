@@ -1,6 +1,9 @@
 <?php
-// filepath: c:\xampp\htdocs\Hotel-Reservation\app\views\Search&Filter\search.php
 session_start();
+if (!isset($_SESSION['status'])) {
+    header("Location: ../../views/authentication/login2.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

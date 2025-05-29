@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let confirmPassword = document.getElementById("confirmPassword").value;
     let msg = document.getElementById("msg");
 
-    // Client-side validation
     if (username.length < 2) {
       msg.innerHTML = "Name must be at least 2 characters.";
       return;

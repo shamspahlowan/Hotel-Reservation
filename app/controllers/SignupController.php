@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
     if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
     if (strlen($data['password']) < 6) $errors[] = "Password must be at least 6 characters.";
 
-    // Check if email already exists
     $con = getConnection();
     $email = mysqli_real_escape_string($con, $data['email']);
     $check = mysqli_query($con, "SELECT id FROM users WHERE email='$email'");

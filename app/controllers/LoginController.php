@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
     $password = $data['password'] ?? '';
     $errors = [];
 
-    // Validation (same as JS)
     $parts = explode('@', $email);
     if ($email === '' || count($parts) !== 2 || $parts[0] === '' || $parts[1] === '') {
         $errors[] = "Invalid email format.";
@@ -31,14 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
         exit;
     }
 
-    // Admin shortcut (optional)
     if ($email === "admin@admin.com" && $password === "123456") {
         $_SESSION["isAdmin"] = "true";
         echo "admin";
         exit;
     }
 
-    // User login
     $user = login($email, $password);
     if ($user) {
         $_SESSION["status"] = "true";

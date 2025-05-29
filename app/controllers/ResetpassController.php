@@ -17,10 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
         exit;
     }
 
-    // Update password in DB
     $email = $_SESSION['reset_email'];
     if (updateUserPasswordByEmail($email, $password)) {
-        // Clear session for reset
         unset($_SESSION['reset_email'], $_SESSION['reset_code'], $_SESSION['reset_verified']);
         echo "Password reset success! You can now login.";
     } else {

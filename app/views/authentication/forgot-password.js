@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     const email = document.getElementById("email").value.trim();
 
-    // Simple email validation
     if (
       email.length < 6 ||
       email.indexOf("@") === -1 ||

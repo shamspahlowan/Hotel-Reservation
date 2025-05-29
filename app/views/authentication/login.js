@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const error = document.getElementById("error");
         error.textContent = '';
 
-        // Simple email validation (no regex)
         const parts = email.split('@');
         if (email === '' || parts.length !== 2 || !parts[0] || !parts[1]) {
             error.textContent = "Please enter a valid email.";

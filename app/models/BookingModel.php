@@ -1,5 +1,4 @@
 <?php
-// filepath: c:\xampp\htdocs\Hotel-Reservation\app\models\BookingModel.php
 require_once('db.php');
 
 function getBookingById($id) {
@@ -20,7 +19,7 @@ function addBooking($booking) {
     $sql = "INSERT INTO bookings (user_id, room_id, checkin_date, checkout_date, status, created_at)
             VALUES ($user_id, $room_id, '$checkin', '$checkout', '$status', NOW())";
     if (mysqli_query($con, $sql)) {
-        return mysqli_insert_id($con); // Return booking ID for guest insert
+        return mysqli_insert_id($con);
     }
     return false;
 }
@@ -94,7 +93,6 @@ function updateBookingStatus($booking_id, $status) {
     return mysqli_query($con, $sql);
 }
 
-// New enhanced functions
 function getAvailableHotels() {
     $con = getConnection();
     $sql = "SELECT h.*, 
@@ -160,36 +158,29 @@ function getRoomWithHotel($room_id) {
 function createBooking($data) {
     $con = getConnection();
     
-    // Check availability first
     $availability = checkRoomAvailability($data['room_id'], $data['checkin_date'], $data['checkout_date']);
     if (!$availability['available']) {
         return ['success' => false, 'message' => 'Room is not available for selected dates'];
     }
     
-    // Get room details for pricing
     $room = getRoomWithHotel($data['room_id']);
     if (!$room) {
         return ['success' => false, 'message' => 'Room not found'];
     }
     
-    // Calculate total amount
     $checkin = new DateTime($data['checkin_date']);
     $checkout = new DateTime($data['checkout_date']);
     $nights = $checkin->diff($checkout)->days;
     $total_amount = $room['price'] * $nights;
     
-    // Generate booking reference
     $booking_reference = 'BK' . strtoupper(uniqid());
     
-    // Check if booking_reference column exists
     $check_column = mysqli_query($con, "SHOW COLUMNS FROM bookings LIKE 'booking_reference'");
     $has_reference = mysqli_num_rows($check_column) > 0;
     
-    // Check if total_amount column exists
     $check_amount = mysqli_query($con, "SHOW COLUMNS FROM bookings LIKE 'total_amount'");
     $has_amount = mysqli_num_rows($check_amount) > 0;
     
-    // Build SQL based on available columns
     if ($has_reference && $has_amount) {
         $sql = "INSERT INTO bookings (
             user_id, room_id, booking_reference, checkin_date, checkout_date, 
@@ -200,7 +191,6 @@ function createBooking($data) {
             {$data['guests']}, $total_amount, 'pending', NOW()
         )";
     } else {
-        // Fallback for existing table structure
         $sql = "INSERT INTO bookings (
             user_id, room_id, checkin_date, checkout_date, status, created_at
         ) VALUES (
@@ -213,7 +203,6 @@ function createBooking($data) {
     if (mysqli_query($con, $sql)) {
         $booking_id = mysqli_insert_id($con);
         
-        // Create payment record if payments table exists
         $check_payments = mysqli_query($con, "SHOW TABLES LIKE 'payments'");
         if (mysqli_num_rows($check_payments) > 0) {
             createPaymentRecord($booking_id, $total_amount, 'pending');
@@ -235,7 +224,6 @@ function createBooking($data) {
 function createGroupBooking($data) {
     $con = getConnection();
     
-    // Start transaction
     mysqli_begin_transaction($con);
     
     try {
@@ -245,13 +233,10 @@ function createGroupBooking($data) {
         $checkout = new DateTime($data['checkout_date']);
         $nights = $checkin->diff($checkout)->days;
         
-        // Generate group reference
         $group_reference = 'GRP' . strtoupper(uniqid());
         
-        // Create individual bookings for each room
         foreach ($data['rooms'] as $room_data) {
             for ($i = 0; $i < $room_data['quantity']; $i++) {
-                // Find available room of this type
                 $room_sql = "SELECT id, price FROM rooms 
                            WHERE hotel_id = {$data['hotel_id']} 
                            AND type = '{$room_data['type']}' 
@@ -275,10 +260,8 @@ function createGroupBooking($data) {
                 $room_total = $room['price'] * $nights;
                 $total_amount += $room_total;
                 
-                // Create booking
                 $booking_reference = $group_reference . '-' . ($i + 1);
                 
-                // Check if extended columns exist
                 $check_columns = mysqli_query($con, "SHOW COLUMNS FROM bookings LIKE 'booking_reference'");
                 $has_extended = mysqli_num_rows($check_columns) > 0;
                 
@@ -294,7 +277,6 @@ function createGroupBooking($data) {
                         'group', '$group_reference', '{$data['payment_terms']}', NOW()
                     )";
                 } else {
-                    // Fallback for basic table structure
                     $booking_sql = "INSERT INTO bookings (
                         user_id, room_id, checkin_date, checkout_date, status, created_at
                     ) VALUES (
@@ -312,7 +294,6 @@ function createGroupBooking($data) {
             }
         }
         
-        // Add event space cost if selected
         if ($data['event_space'] && $data['event_space'] !== 'none') {
             $event_costs = [
                 'conference' => 500,
@@ -321,13 +302,11 @@ function createGroupBooking($data) {
             $total_amount += $event_costs[$data['event_space']] ?? 0;
         }
         
-        // Create payment record for group if payments table exists
         $check_payments = mysqli_query($con, "SHOW TABLES LIKE 'payments'");
         if (mysqli_num_rows($check_payments) > 0) {
             createPaymentRecord($booking_ids[0], $total_amount, 'pending', $group_reference);
         }
         
-        // Store guest information in booking_guests table if it exists
         $check_guests = mysqli_query($con, "SHOW TABLES LIKE 'booking_guests'");
         if (mysqli_num_rows($check_guests) > 0 && isset($data['guests'])) {
             foreach ($data['guests'] as $guest) {
@@ -360,7 +339,6 @@ function createPaymentRecord($booking_id, $amount, $status, $group_reference = n
     $con = getConnection();
     $payment_reference = 'PAY' . strtoupper(uniqid());
     
-    // Check if extended payment columns exist
     $check_columns = mysqli_query($con, "SHOW COLUMNS FROM payments LIKE 'payment_reference'");
     $has_extended = mysqli_num_rows($check_columns) > 0;
     
@@ -373,7 +351,6 @@ function createPaymentRecord($booking_id, $amount, $status, $group_reference = n
             'pending', NULL, NOW()
         )";
     } else {
-        // Fallback for basic payments table
         $sql = "INSERT INTO payments (booking_id, amount, status, created_at) 
                 VALUES ($booking_id, $amount, '$status', NOW())";
     }
@@ -407,7 +384,6 @@ function cancelBooking($booking_id, $user_id) {
     $booking_id = intval($booking_id);
     $user_id = intval($user_id);
     
-    // Check if booking belongs to user and can be cancelled
     $check_sql = "SELECT status, checkin_date FROM bookings 
                   WHERE id = $booking_id AND user_id = $user_id";
     $result = mysqli_query($con, $check_sql);
@@ -421,7 +397,6 @@ function cancelBooking($booking_id, $user_id) {
         return ['success' => false, 'message' => 'Booking already cancelled'];
     }
     
-    // Check if cancellation is allowed (24 hours before check-in)
     $checkin = new DateTime($booking['checkin_date']);
     $now = new DateTime();
     $hours_until_checkin = ($checkin->getTimestamp() - $now->getTimestamp()) / 3600;
@@ -430,11 +405,9 @@ function cancelBooking($booking_id, $user_id) {
         return ['success' => false, 'message' => 'Cannot cancel booking less than 24 hours before check-in'];
     }
     
-    // Update booking status
     $update_sql = "UPDATE bookings SET status = 'cancelled' WHERE id = $booking_id";
     
     if (mysqli_query($con, $update_sql)) {
-        // Update payment status if payments table exists
         $check_payments = mysqli_query($con, "SHOW TABLES LIKE 'payments'");
         if (mysqli_num_rows($check_payments) > 0) {
             mysqli_query($con, "UPDATE payments SET status = 'cancelled' WHERE booking_id = $booking_id");

@@ -163,5 +163,4 @@ function filterRequests() {
   displayRequests();
 }
 
-// Initialize page
 window.onload = checkGuestStatus;

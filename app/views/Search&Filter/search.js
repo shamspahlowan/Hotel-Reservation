@@ -9,7 +9,6 @@ const acCheck = document.getElementById("ac");
 const resultsDiv = document.getElementById("results");
 const loadingDiv = document.getElementById("loading");
 
-// Load rooms from database
 async function loadRooms() {
     showLoading(true);
     try {
@@ -61,16 +60,14 @@ function displayRooms(rooms) {
         const hotelAmenities = room.hotel_amenities ? room.hotel_amenities.split(',').map(a => a.trim()) : [];
         const allAmenities = [...new Set([...amenitiesList, ...hotelAmenities])];
         
-        // Fix rating conversion - ensure it's a number
         const rating = parseFloat(room.room_rating || room.hotel_rating || 0);
         const reviewCount = parseInt(room.review_count || 0);
         
-        // Fix price conversion
         const price = parseFloat(room.price || 0);
         
         div.innerHTML = `
             <div class="room-image">
-                <img src="${room.image || room.hotel_image || 'https://via.placeholder.com/300x200?text=Room+Image'}" 
+                <img src="${room.image || room.hotel_image || '../../public/assets/room1.jpg'}" 
                      alt="${room.type} room at ${room.hotel_name}" />
                 <div class="room-price">$${price.toFixed(0)}<span>/night</span></div>
             </div>
@@ -113,7 +110,6 @@ function displayRooms(rooms) {
 }
 
 function generateStars(rating) {
-    // Ensure rating is a number
     const numRating = parseFloat(rating) || 0;
     const fullStars = Math.floor(numRating);
     const hasHalfStar = (numRating % 1) >= 0.5;
@@ -173,12 +169,12 @@ function displayError(message) {
 
 function viewRoomDetails(roomId) {
     const params = new URLSearchParams(window.location.search);
-    window.location.href = `roomDetails.php?room_id=${roomId}&${params.toString()}`;
+    window.location.href = `../../views/RoomTypes/room-types.php`;
 }
 
 function bookRoom(roomId) {
     const params = new URLSearchParams(window.location.search);
-    window.location.href = `../Booking/booking.php?room_id=${roomId}&${params.toString()}`;
+    window.location.href = `../../views/GroupBookings/group-bookings.php`;
 }
 
 function initializeSearch() {
@@ -186,10 +182,8 @@ function initializeSearch() {
     const destination = params.get("destination") || "";
     const guests = params.get("guests") || "";
 
-    // Pre-fill search input with destination
     searchInput.value = destination;
 
-    // Infer room type from guests
     let inferredType = "";
     const guestCount = parseInt(guests) || 1;
     if (guestCount === 1) {
@@ -203,11 +197,9 @@ function initializeSearch() {
         roomType.value = inferredType;
     }
 
-    // Load rooms from database
     loadRooms();
 }
 
-// Event listeners
 searchInput.addEventListener("input", () => {
     clearTimeout(window.searchTimeout);
     window.searchTimeout = setTimeout(filterRooms, 300);

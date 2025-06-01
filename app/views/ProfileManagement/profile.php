@@ -18,8 +18,7 @@ $user = getUserById($_SESSION['user_id']);
 <body>
   <div class="profile-container">
     <h2>My Profile</h2>
-    
-    <!-- Profile Info Form -->
+
     <form id="profileForm" method="POST" action="javascript:void(0);" enctype="multipart/form-data">
       <div class="avatar-box">
         <img id="avatar" src="../../<?php echo htmlspecialchars($user['avatar'] ?? 'uploads/avatars/default.png'); ?>" alt="Profile Picture" />
@@ -35,7 +34,6 @@ $user = getUserById($_SESSION['user_id']);
       <button type="submit" id="saveBtn" style="display:none;">Save Changes</button>
     </form>
 
-    <!-- Password Change Form -->
     <button type="button" id="changePassBtn">Change Password</button>
     <form id="passwordForm" method="POST" action="javascript:void(0);" style="display:none;">
       <input type="password" id="newPassword" name="newPassword" placeholder="New Password" required>

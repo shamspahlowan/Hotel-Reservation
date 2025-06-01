@@ -56,7 +56,7 @@ function renderAmenityComparison() {
         ["Standard", "Deluxe", "Suite"].forEach(cat => {
             const room = rooms.find(r => r.category === cat);
             const hasAmenity = room?.amenities.includes(amenity);
-            cells.push(hasAmenity ? "✔️" : "❌");
+            cells.push(hasAmenity ? "available" : "not available");
         });
 
         row.innerHTML = cells.map(cell => `<td>${cell}</td>`).join("");
@@ -64,7 +64,6 @@ function renderAmenityComparison() {
     });
 }
 
-// Client-side validation
 document.getElementById("filterForm").addEventListener("submit", function(event) {
     const select = document.getElementById("categorySelect");
     const value = select.value;
@@ -85,6 +84,5 @@ document.getElementById("filterForm").addEventListener("submit", function(event)
     }
 });
 
-// Initial render
 renderRooms(filter);
 renderAmenityComparison();

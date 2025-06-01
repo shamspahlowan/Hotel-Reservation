@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const msg = document.getElementById("msg");
   const passMsg = document.getElementById("passMsg");
 
-  // Preview avatar on file select
   avatarUpload.addEventListener("change", function () {
     if (this.files && this.files[0]) {
       const reader = new FileReader();
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Enable editing
   editBtn.addEventListener("click", function () {
     usernameInput.disabled = false;
     emailInput.disabled = false;
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     saveBtn.style.display = "inline-block";
   });
 
-  // Profile form submission (same as signup style)
   profileForm.onsubmit = function (e) {
     e.preventDefault();
     
@@ -39,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = emailInput.value.trim();
     msg.innerHTML = "";
 
-    // Validation (same as signup)
     if (username.length < 2) {
       msg.innerHTML = "Name must be at least 2 characters.";
       return;
@@ -57,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Create FormData (for file upload)
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -65,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("avatarUpload", avatarUpload.files[0]);
     }
 
-    // AJAX request (exact same style as signup)
     let xhttp = new XMLHttpRequest();
     xhttp.open('POST', '../../controllers/ProfileController.php', true);
     xhttp.send(formData);
@@ -89,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Password form submission (same as signup style)
   passwordForm.onsubmit = function (e) {
     e.preventDefault();
     
@@ -97,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmPassword = document.getElementById("confirmPassword").value;
     passMsg.innerHTML = "";
 
-    // Validation (same as signup)
     if (newPassword.length < 6) {
       passMsg.innerHTML = "Password must be at least 6 characters.";
       return;
@@ -107,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // AJAX request (exact same style as signup)
     let json = {
       'password': newPassword
     };
@@ -133,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Show/hide password form
   changePassBtn.addEventListener("click", function () {
     passwordForm.style.display = "block";
   });

@@ -1,15 +1,13 @@
-// Admin Dashboard JavaScript
+
 document.addEventListener("DOMContentLoaded", function () {
     loadDashboardData();
 });
 
-// Load initial dashboard data
 function loadDashboardData() {
     loadDashboardStats();
     loadRecentBookings();
 }
 
-// Dashboard Stats
 function loadDashboardStats() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getDashboardStats', true);
@@ -33,7 +31,6 @@ function updateDashboardStats(data) {
     document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = data.activeUsers || '0';
 }
 
-// Recent Bookings
 function loadRecentBookings() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getRecentBookings', true);
@@ -50,21 +47,17 @@ function loadRecentBookings() {
     xhttp.send();
 }
 
-// Show Section Function
 function showSection(sectionId) {
-    // Hide all sections
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
     });
-    // Show selected section
     document.getElementById(`${sectionId}-section`).classList.add('active');
-    // Update active nav item
+
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
     });
     document.querySelector(`.nav-item[href="#${sectionId}"]`).classList.add('active');
-    
-    // Load section-specific data
+
     loadSectionData(sectionId);
 }
 
@@ -88,7 +81,6 @@ function loadSectionData(sectionId) {
     }
 }
 
-// Bookings Management
 function loadAllBookings() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getAllBookings', true);
@@ -169,7 +161,6 @@ function updateBookingStatus(bookingId, newStatus) {
     xhttp.send('json=' + json);
 }
 
-// Users Management
 function loadAllUsers() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getAllUsers', true);
@@ -283,7 +274,6 @@ function editUserRole(userId, currentRole) {
     xhttp.send('json=' + json);
 }
 
-// Transactions Management
 function loadTransactions() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getTransactions', true);
@@ -345,7 +335,6 @@ function updateTransactionStats(transactions) {
     }
 }
 
-// Analytics
 function loadAnalytics() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', '../../controllers/AdminController.php?action=getAnalytics', true);
@@ -363,13 +352,11 @@ function loadAnalytics() {
 }
 
 function updateAnalyticsCharts(data) {
-    // Update occupancy rate
     const occupancyEl = document.querySelector('#analytics-section .card:first-child .chart-container div div:first-child');
     if (occupancyEl) {
         occupancyEl.textContent = (data.occupancyRate || 0) + '%';
     }
     
-    // Update revenue streams
     const revenueStreams = document.querySelectorAll('#analytics-section .card:nth-child(2) .chart-container div div');
     if (revenueStreams.length >= 4 && data.revenueStreams) {
         revenueStreams[1].textContent = data.revenueStreams.rooms + '%';
@@ -408,7 +395,6 @@ function addNewHotel() {
     xhttp.send('json=' + json);
 }
 
-// Utility Functions
 function getStatusClass(status) {
     switch (status) {
         case 'confirmed':
@@ -436,7 +422,6 @@ function formatDate(dateString) {
 }
 
 function showMessage(message, type) {
-    // Create a simple toast notification
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     toast.style.cssText = `
@@ -470,7 +455,6 @@ function showMessage(message, type) {
     }, 3000);
 }
 
-// Search functionality
 function setupSearch() {
     document.querySelectorAll('.search-input').forEach(input => {
         input.addEventListener('input', function() {
@@ -486,13 +470,11 @@ function setupSearch() {
     });
 }
 
-// Initialize search after DOM load
 document.addEventListener('DOMContentLoaded', function() {
     setupSearch();
 });
 
 function loadHotels() {
-    // Load hotel stats
     const xhttp1 = new XMLHttpRequest();
     xhttp1.open('GET', '../../controllers/AdminController.php?action=getHotelStats', true);
     xhttp1.onreadystatechange = function () {
@@ -507,7 +489,6 @@ function loadHotels() {
     };
     xhttp1.send();
     
-    // Load all hotels
     const xhttp2 = new XMLHttpRequest();
     xhttp2.open('GET', '../../controllers/AdminController.php?action=getAllHotels', true);
     xhttp2.onreadystatechange = function () {
@@ -563,7 +544,6 @@ function populateHotelsTable(hotels) {
 }
 
 function addNewHotel() {
-    // Create a simple modal/form for adding hotel
     const form = `
         <div id="hotelModal" style="
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -596,7 +576,6 @@ function addNewHotel() {
     
     document.body.insertAdjacentHTML('beforeend', form);
     
-    // Handle form submission
     document.getElementById('addHotelForm').onsubmit = function(e) {
         e.preventDefault();
         
@@ -614,7 +593,6 @@ function addNewHotel() {
             amenities: document.getElementById('hotelAmenities').value.trim()
         };
         
-        // Validation
         if (!hotelData.name || !hotelData.address || !hotelData.city || !hotelData.state || !hotelData.country || !hotelData.total_rooms) {
             document.getElementById('hotelMsg').textContent = 'Please fill in all required fields.';
             return;
@@ -684,7 +662,6 @@ function deleteHotelConfirm(id) {
     xhttp.send('json=' + json);
 }
 
-// Action functions (placeholders for modal implementations)
 function viewBooking(id) { showMessage(`View booking #${id}`, 'info'); }
 function editBooking(id) { showMessage(`Edit booking #${id}`, 'info'); }
 function viewUser(id) { showMessage(`View user #${id}`, 'info'); }

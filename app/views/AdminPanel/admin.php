@@ -67,9 +67,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </a>
     </div>
   </aside>
-  <!-- Main Content Area -->
   <main class="main-content">
-    <!-- Dashboard Section -->
     <section class="content-section active" id="dashboard-section">
       <div class="dashboard-header">
         <h1 class="page-title">Dashboard</h1>
@@ -78,7 +76,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary" onclick="addNewHotel()">Add Hotel</button>
         </div>
       </div>
-      <!-- Stats Cards (Dynamic) -->
       <div class="card-grid">
         <div class="card stat-card">
           <div class="stat-title">Total Bookings</div>
@@ -109,7 +106,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           </div>
         </div>
       </div>
-      <!-- Recent Bookings Table (Dynamic) -->
       <div class="table-container">
         <div class="table-header">
           <h2 class="table-title">Recent Bookings</h2>
@@ -137,7 +133,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Booking Management Section -->
     <section class="content-section user-role-section" id="bookings-section">
       <div class="dashboard-header">
         <h1 class="page-title">Booking Management</h1>
@@ -146,7 +141,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary">Create Booking</button>
         </div>
       </div>
-      <!-- Booking Status Cards (Dynamic) -->
       <div class="card-grid">
         <div class="card stat-card">
           <div class="stat-title">Total Bookings</div>
@@ -169,7 +163,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <div class="stat-change">% of total</div>
         </div>
       </div>
-      <!-- Bookings Table (Dynamic) -->
       <div class="table-container">
         <div class="table-header">
           <h2 class="table-title">All Bookings</h2>
@@ -199,7 +192,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Users Management Section -->
     <section class="content-section user-role-section" id="users-section">
       <div class="dashboard-header">
         <h1 class="page-title">User Management</h1>
@@ -208,7 +200,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary" onclick="showMessage('Add User feature will be implemented soon', 'info')">Add New User</button>
         </div>
       </div>
-      <!-- User Stats Cards (Dynamic) -->
       <div class="card-grid">
         <div class="card stat-card">
           <div class="stat-title">Total Users</div>
@@ -239,7 +230,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           </div>
         </div>
       </div>
-      <!-- Users Table (Dynamic) -->
       <div class="table-container">
         <div class="table-header">
           <h2 class="table-title">All Users</h2>
@@ -269,7 +259,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Transactions Section -->
     <section class="content-section user-role-section" id="transactions-section">
       <div class="dashboard-header">
         <h1 class="page-title">Transaction Management</h1>
@@ -278,7 +267,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary">Filter</button>
         </div>
       </div>
-      <!-- Transaction Stats Cards (Dynamic) -->
       <div class="card-grid">
         <div class="card stat-card">
           <div class="stat-title">Total Revenue</div>
@@ -309,7 +297,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           </div>
         </div>
       </div>
-      <!-- Transactions Table (Dynamic) -->
       <div class="table-container">
         <div class="table-header">
           <h2 class="table-title">Recent Transactions</h2>
@@ -339,7 +326,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Analytics Section -->
     <section class="content-section user-role-section" id="analytics-section">
       <div class="dashboard-header">
         <h1 class="page-title">Analytics & Reports</h1>
@@ -348,7 +334,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary">Date Range</button>
         </div>
       </div>
-      <!-- Analytics Cards (Dynamic) -->
       <div class="card-grid">
         <div class="card">
           <div class="stat-title">Occupancy Rate</div>
@@ -395,7 +380,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary" onclick="addNewHotel()">Add New Hotel</button>
         </div>
       </div>
-      <!-- Hotel Stats Cards -->
       <div class="card-grid">
         <div class="card stat-card">
           <div class="stat-title">Total Hotels</div>
@@ -418,7 +402,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <div class="stat-change">Customer satisfaction</div>
         </div>
       </div>
-      <!-- Hotels Table -->
       <div class="table-container">
         <div class="table-header">
           <h2 class="table-title">Manage Hotels</h2>
@@ -447,7 +430,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Roles & Permissions Section (Keep as static for now) -->
     <section class="content-section user-role-section" id="roles-section">
       <div class="dashboard-header">
         <h1 class="page-title">Roles & Permissions</h1>
@@ -455,7 +437,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           <button class="btn btn-primary">Add New Role</button>
         </div>
       </div>
-      <!-- Admin Role Card -->
       <div class="role-card">
         <div class="role-header">
           <div class="role-name">Admin</div>
@@ -493,7 +474,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
           </div>
         </div>
       </div>
-      <!-- User Role Card -->
       <div class="role-card">
         <div class="role-header">
           <div class="role-name">Guest</div>
@@ -516,7 +496,6 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       </div>
     </section>
 
-    <!-- Placeholder Sections -->
     <section class="content-section user-role-section" id="profile-section">
       <div class="dashboard-header">
         <h1 class="page-title">Profile</h1>

@@ -95,19 +95,15 @@ function getHotelStats() {
     $con = getConnection();
     $stats = [];
     
-    // Total hotels
     $result = mysqli_query($con, "SELECT COUNT(*) as total FROM hotels");
     $stats['total'] = mysqli_fetch_assoc($result)['total'];
     
-    // Active hotels
     $result = mysqli_query($con, "SELECT COUNT(*) as active FROM hotels WHERE status='active'");
     $stats['active'] = mysqli_fetch_assoc($result)['active'];
     
-    // Total rooms across all hotels
     $result = mysqli_query($con, "SELECT SUM(total_rooms) as total_rooms FROM hotels");
     $stats['total_rooms'] = mysqli_fetch_assoc($result)['total_rooms'] ?? 0;
     
-    // Average rating from actual reviews
     $result = mysqli_query($con, "SELECT AVG(rv.rating) as avg_rating 
                                   FROM reviews rv 
                                   JOIN rooms r ON rv.room_id = r.id 

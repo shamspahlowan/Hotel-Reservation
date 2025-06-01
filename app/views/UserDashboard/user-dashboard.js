@@ -1,7 +1,6 @@
 function fetchUserBookings() {
   var xhttp = new XMLHttpRequest();
   xhttp.open('GET', '../../controllers/BookingController.php?action=getBookingsByUser', true);
-  xhttp.withCredentials = true;
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let data;
@@ -14,7 +13,6 @@ function fetchUserBookings() {
         return;
       }
 
-      // Find current stay (confirmed or pending, checkout_date >= today)
       let currentStay = null;
       const today = new Date().toISOString().slice(0, 10);
       data.forEach(function(b) {
@@ -27,7 +25,6 @@ function fetchUserBookings() {
         }
       });
 
-      // Display current stay
       const currentStayDiv = document.getElementById("currentStay");
       const conciergeBtn = document.getElementById("conciergeBtn");
       if (currentStay) {
@@ -44,7 +41,6 @@ function fetchUserBookings() {
         conciergeBtn.style.display = "none";
       }
 
-      // Display booking history
       const tbody = document.querySelector("#bookingHistory tbody");
       tbody.innerHTML = "";
       if (data.length > 0) {

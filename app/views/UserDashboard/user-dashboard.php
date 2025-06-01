@@ -41,31 +41,31 @@ $userAvatar = $user['avatar'] ?? 'defaultProfileImage.png';
         <span>Profile</span>
       </div> -->
       <div class="link-card" onclick="window.location.href='../../views/profileManagement/profile.php'">
-        <div class="icon">✏️</div>
+        <div class="icon"></div>
         <span>Edit Profile</span>
       </div>
-      <div class="link-card" onclick="window.location.href='../../views/GroupBookings/group-bookings.php'">
-        <div class="icon">🧑‍🤝‍🧑</div>
-        <span>Booking</span>
-      </div>
-      <div class="link-card" onclick="window.location.href='../../views/ContactUs/contact.php'">
-        <div class="icon">✉️</div>
-        <span>Contact Us</span>
-      </div>
-      <div class="link-card" onclick="window.location.href='../../views/Cancellation/cancellation-policy.php'">
-        <div class="icon">🚫</div>
-        <span>Cancellation</span>
-      </div>
       <div class="link-card" onclick="window.location.href='../../views/Search&Filter/search.php'">
-        <div class="icon">🔍</div>
+        <div class="icon"></div>
         <span>Search & Filter</span>
       </div>
+      <div class="link-card" onclick="window.location.href='../../views/GroupBookings/group-bookings.php'">
+        <div class="icon"></div>
+        <span>Booking</span>
+      </div>
+      <!-- <div class="link-card" onclick="window.location.href='../../views/ContactUs/contact.php'">
+        <div class="icon"></div>
+        <span>Contact Us</span>
+      </div> -->
       <div class="link-card" id="conciergeBtn" style="display:none;" onclick="window.location.href='../../views/ConciergeRequest/concierge-requests.php'">
-        <div class="icon">🛎️</div>
+        <div class="icon"></div>
         <span>Concierge Requests</span>
       </div>
+      <div class="link-card" onclick="window.location.href='../../views/Cancellation/cancellation-policy.php'">
+        <div class="icon"></div>
+        <span>Cancellation</span>
+      </div>
       <div class="link-card" onclick="window.location.href='../../views/Billing/billing-summary.php'">
-        <div class="icon">💳</div>
+        <div class="icon"></div>
         <span>Billing Summary</span>
       </div>
     </div>

@@ -1,5 +1,4 @@
 <?php
-// filepath: c:\xampp\htdocs\Hotel-Reservation\app\controllers\BookingController.php
 session_start();
 header('Content-Type: application/json');
 require_once('../models/BookingModel.php');
@@ -71,12 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
     
-    // Handle both JSON and form data
     if (!$data && isset($_POST['json'])) {
         $data = json_decode($_POST['json'], true);
     }
     
-    // Handle legacy form data
     if (!$data) {
         $data = $_POST;
     }
@@ -122,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode($result);
             break;
             
-        // Legacy support for existing booking functions
         case 'addBooking':
             $booking = [
                 'user_id' => $data['user_id'] ?? $_SESSION['user_id'],

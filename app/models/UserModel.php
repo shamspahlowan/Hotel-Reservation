@@ -13,7 +13,6 @@ function login($email, $password) {
     return false;
 }
 
-// Get user by ID
 function getUserById($id)
 {
     $con = getConnection();
@@ -27,7 +26,6 @@ function getUserById($id)
     }
 }
 
-// Get all users
 function getAllUsers()
 {
     $con = getConnection();
@@ -40,7 +38,6 @@ function getAllUsers()
     return $users;
 }
 
-// Add a new user
 function addUser($user)
 {
     $con = getConnection();
@@ -55,7 +52,6 @@ function addUser($user)
     return mysqli_query($con, $sql);
 }
 
-// Update user by ID
 function updateUser($id, $user)
 {
     $con = getConnection();
@@ -71,7 +67,6 @@ function updateUser($id, $user)
     return mysqli_query($con, $sql);
 }
 
-// Delete user by ID
 function deleteUser($id)
 {
     $con = getConnection();

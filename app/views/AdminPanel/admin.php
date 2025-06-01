@@ -72,7 +72,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       <div class="dashboard-header">
         <h1 class="page-title">Dashboard</h1>
         <div class="actions">
-          <button class="btn btn-outline">Export Report</button>
+          <!-- <button class="btn btn-outline">Export Report</button> -->
           <button class="btn btn-primary" onclick="addNewHotel()">Add Hotel</button>
         </div>
       </div>
@@ -137,7 +137,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       <div class="dashboard-header">
         <h1 class="page-title">Booking Management</h1>
         <div class="actions">
-          <button class="btn btn-outline">Filter</button>
+          <!-- <button class="btn btn-outline">Filter</button> -->
           <button class="btn btn-primary">Create Booking</button>
         </div>
       </div>
@@ -196,7 +196,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       <div class="dashboard-header">
         <h1 class="page-title">User Management</h1>
         <div class="actions">
-          <button class="btn btn-outline">Filter</button>
+          <!-- <button class="btn btn-outline">Filter</button> -->
           <button class="btn btn-primary" onclick="showMessage('Add User feature will be implemented soon', 'info')">Add New User</button>
         </div>
       </div>
@@ -263,8 +263,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       <div class="dashboard-header">
         <h1 class="page-title">Transaction Management</h1>
         <div class="actions">
-          <button class="btn btn-outline">Export CSV</button>
-          <button class="btn btn-primary">Filter</button>
+          <!-- <button class="btn btn-outline">Export CSV</button>
+          <button class="btn btn-primary">Filter</button> -->
         </div>
       </div>
       <div class="card-grid">
@@ -330,8 +330,8 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
       <div class="dashboard-header">
         <h1 class="page-title">Analytics & Reports</h1>
         <div class="actions">
-          <button class="btn btn-outline">Export Report</button>
-          <button class="btn btn-primary">Date Range</button>
+          <!-- <button class="btn btn-outline">Export Report</button>
+          <button class="btn btn-primary">Date Range</button> -->
         </div>
       </div>
       <div class="card-grid">
@@ -501,7 +501,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
         <h1 class="page-title">Profile</h1>
       </div>
       <div class="card">
-        <p>Profile settings go here.</p>
+        <p>Sorr, Profile settings service will be available soon.</p>
       </div>
     </section>
     <section class="content-section user-role-section" id="settings-section">
@@ -509,7 +509,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
         <h1 class="page-title">System Settings</h1>
       </div>
       <div class="card">
-        <p>System settings go here.</p>
+        <p>Sorry, System settings will be available soon.</p>
       </div>
     </section>
     <section class="content-section user-role-section" id="reports-section">
@@ -517,7 +517,7 @@ if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] !== "true") {
         <h1 class="page-title">Financial Reports</h1>
       </div>
       <div class="card">
-        <p>Financial reports go here.</p>
+        <p>Sorry, Financial service will be available soon.</p>
       </div>
     </section>
   </main>

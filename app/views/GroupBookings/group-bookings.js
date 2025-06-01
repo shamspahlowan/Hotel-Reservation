@@ -30,7 +30,6 @@ function updateHotelSelects() {
     const singleHotelSelect = document.getElementById('single-hotel');
     const groupHotelSelect = document.getElementById('group-hotel');
     
-    // Clear existing options
     singleHotelSelect.innerHTML = '<option value="">Select a hotel</option>';
     groupHotelSelect.innerHTML = '<option value="">Select a hotel</option>';
     
@@ -66,7 +65,6 @@ function updateRoomSelects(targetSelectId) {
     const roomSelect = document.getElementById(targetSelectId);
     roomSelect.innerHTML = '<option value="">Select a room</option>';
     
-    // Group rooms by type for display
     const roomTypes = {};
     rooms.forEach(room => {
         if (!roomTypes[room.type]) {
@@ -83,7 +81,6 @@ function updateRoomSelects(targetSelectId) {
     });
 }
 
-// Event listeners for hotel selection
 document.getElementById('single-hotel').addEventListener('change', function() {
     loadHotelRooms(this.value, 'single-room');
 });
@@ -92,12 +89,10 @@ document.getElementById('group-hotel').addEventListener('change', function() {
     loadHotelRooms(this.value, 'room-type');
 });
 
-// Date validation
 function updateCheckoutMinDate() {
     const checkinInputs = ['single-checkin', 'group-checkin'];
     const checkoutInputs = ['single-checkout', 'group-checkout'];
     
-    // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     checkinInputs.forEach(id => {
         const input = document.getElementById(id);
@@ -138,7 +133,6 @@ function addGuest() {
         return;
     }
 
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         guestList.innerHTML = '<span class="highlight">Please enter a valid email address.</span>';
@@ -185,7 +179,6 @@ function addRoom() {
         return;
     }
 
-    // Check availability
     const availableRooms = rooms.filter(r => r.type === roomType).length;
     const alreadySelected = selectedRooms.filter(r => r.type === roomType).reduce((sum, r) => sum + r.quantity, 0);
     

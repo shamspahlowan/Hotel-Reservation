@@ -18,7 +18,7 @@ if ($action === 'getAllRoomTypes') {
     foreach ($roomTypes as &$type) {
         $type['amenities'] = $amenitiesMap[$type['id']] ?? [];
     }
-   ACR echo json_encode($roomTypes);
+   echo json_encode($roomTypes);
     exit;
 }
 

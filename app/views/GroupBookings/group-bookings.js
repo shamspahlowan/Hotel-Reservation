@@ -3,7 +3,6 @@ let rooms = [];
 let guests = [];
 let selectedRooms = [];
 
-// Load data on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadHotels();
     updateCheckoutMinDate();
@@ -228,7 +227,6 @@ function calculateNights(checkIn, checkOut) {
     return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 }
 
-// SINGLE BOOKING FUNCTION (FIXED)
 async function submitSingleBooking() {
     const hotelId = document.getElementById('single-hotel').value;
     const roomType = document.getElementById('single-room').value;
@@ -236,7 +234,6 @@ async function submitSingleBooking() {
     const checkOut = document.getElementById('single-checkout').value;
     const result = document.getElementById('single-result');
 
-    // Debug: Log the values
     console.log('Form values:', { hotelId, roomType, checkIn, checkOut });
 
     if (!hotelId || !roomType || !checkIn || !checkOut) {
@@ -252,7 +249,6 @@ async function submitSingleBooking() {
         return;
     }
 
-    // Find available room of selected type
     const availableRoom = rooms.find(r => r.type === roomType);
     if (!availableRoom) {
         result.innerHTML = '<span class="highlight">No rooms of selected type available.</span>';
@@ -269,8 +265,8 @@ async function submitSingleBooking() {
             room_id: availableRoom.id,
             checkin_date: checkIn,
             checkout_date: checkOut,
-            guests: 1, // Default to 1 guest since the form field doesn't exist yet
-            special_requests: '' // Default empty since the form field doesn't exist yet
+            guests: 1,
+            special_requests: '' 
         };
 
         console.log('Sending booking data:', bookingData);
@@ -289,7 +285,7 @@ async function submitSingleBooking() {
             const nights = calculateNights(checkIn, checkOut);
             
             result.innerHTML = `
-                <strong>✅ Booking Confirmed!</strong><br>
+                <strong>Booking Confirmed!</strong><br>
                 <strong>Booking Reference:</strong> ${data.booking_reference || 'N/A'}<br>
                 <strong>Hotel:</strong> ${hotel.name}<br>
                 <strong>Room:</strong> ${availableRoom.type} Room<br>
@@ -305,17 +301,16 @@ async function submitSingleBooking() {
             `;
             result.className = 'result success';
         } else {
-            result.innerHTML = `<span class="highlight">❌ ${data.message}</span>`;
+            result.innerHTML = `<span class="highlight">${data.message}</span>`;
             result.className = 'result error';
         }
     } catch (error) {
         console.error('Error:', error);
-        result.innerHTML = '<span class="highlight">❌ Failed to create booking. Please try again.</span>';
+        result.innerHTML = '<span class="highlight">Failed to create booking. Please try again.</span>';
         result.className = 'result error';
     }
 }
 
-// GROUP BOOKING FUNCTION (FIXED)
 async function submitGroupBooking() {
     const hotelId = document.getElementById('group-hotel').value;
     const checkIn = document.getElementById('group-checkin').value;
@@ -373,7 +368,7 @@ async function submitGroupBooking() {
             const roomSummary = selectedRooms.map(r => `${r.quantity} x ${r.type} Room`).join('<br>');
             
             result.innerHTML = `
-                <strong>✅ Group Booking Confirmed!</strong><br>
+                <strong>Group Booking Confirmed!</strong><br>
                 <strong>Group Reference:</strong> ${data.group_reference}<br>
                 <strong>Hotel:</strong> ${hotel.name}<br>
                 <strong>Check-in:</strong> ${checkIn}<br>
@@ -391,12 +386,12 @@ async function submitGroupBooking() {
             `;
             result.className = 'result success';
         } else {
-            result.innerHTML = `<span class="highlight">❌ ${data.message}</span>`;
+            result.innerHTML = `<span class="highlight"> ${data.message}</span>`;
             result.className = 'result error';
         }
     } catch (error) {
         console.error('Error:', error);
-        result.innerHTML = '<span class="highlight">❌ Failed to create group booking. Please try again.</span>';
+        result.innerHTML = '<span class="highlight"> Failed to create group booking. Please try again.</span>';
         result.className = 'result error';
     }
 }

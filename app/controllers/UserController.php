@@ -1,7 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/UserModel.php');
 
-// Example: Handle different actions based on a request parameter
 if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_REQUEST['action'] ?? '';
 

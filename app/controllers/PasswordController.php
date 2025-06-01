@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
     $data = json_decode($_POST['json'], true);
     $password = $data['password'] ?? '';
 
-    // Validation (same as signup)
     if ($password === '') {
         echo "Password cannot be empty.";
         exit;
@@ -23,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['json'])) {
         exit;
     }
 
-    // Update password (same as signup style)
     $user = ['password' => $password];
     if (updateUser($user_id, $user)) {
         echo "success";

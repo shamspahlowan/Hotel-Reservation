@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $errors = [];
 
-    // Validation (same as signup)
     if ($username === '') {
         $errors[] = "Name cannot be empty.";
     } elseif (strlen($username) < 2) {
@@ -32,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Check if email already exists (for other users)
     $con = getConnection();
     $email_escaped = mysqli_real_escape_string($con, $email);
     $check = mysqli_query($con, "SELECT id FROM users WHERE email='$email_escaped' AND id != $user_id");
@@ -45,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Handle avatar upload (same logic as file uploads)
     $avatarPath = null;
     if (isset($_FILES['avatarUpload']) && $_FILES['avatarUpload']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['avatarUpload']['tmp_name'];
@@ -75,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Update user data (same as signup style)
     $user = [
         'username' => $username,
         'email' => $email
